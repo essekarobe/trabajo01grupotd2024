@@ -253,6 +253,7 @@ tabla_decision
 ```
 Donde las estrategias son los tipos de publicidad y los estados de la naturaleza los mercados considerar:
 a)Beneficios (favorable)
+
 Criterio de wald: Selecciona la estrategia que tenga el mayor de los valores mínimos, siendo conservador.
 ```{r}
 s01_wald = criterio.Wald(tabla_decision,T)
