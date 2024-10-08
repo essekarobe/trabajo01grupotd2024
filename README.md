@@ -2,7 +2,7 @@
 ## Alumnos: 
 - Laura Mayorgas del Castillo
 - Roberto González Lozano
-- Belén Puertas Gonzalez
+- Belén Puerta González
 - María del Rosario Ruiz Avila
 
 ## Descripción: 
