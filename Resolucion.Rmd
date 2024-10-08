@@ -1,0 +1,216 @@
+---
+title: "Resolución Problemas"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    toc_depth: 5
+lang: es
+number-sections: true
+toc: true
+---
+\newpage
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("teoriadecision_funciones_incertidumbre.R")
+```
+
+# Laura Mayorgasdel Castillo
+
+## Problema 1 
+Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos vienen dadas en la tabla siguiente: 
+
+```{r, echo=FALSE}
+tabla=cbind(tabla <- data.frame(
+  e1 = c(4,5,-3,7,8),
+  e2 = c(3,-1,3,7,9),
+  e3 = c(-4,9,8,2,1),
+  e4 = c(4,6,7,-9,3)
+))
+row.names(tabla)=c("d1","d2","d3","d4","d5")
+knitr::kable(tabla)
+```
+
+
+a) Desde el punto de vista FAVORABLE
+b) Desde el punto de vista DESFAVORABLE
+
+###  Desde el punto de vista FAVORABLE o BENEFICIOS
+```{r}
+tb01= crea.tablaX(c(4,5,-3,7,8,
+                    3,-1,3,7,9,
+                    -4,9,8,2,1,
+                    4,6,7,-9,3),numalternativas = 4,numestados = 5)
+```
+
+1. Criterio de Wald
+
+```{r}
+sol1Wlad=criterio.Wald(tb01,favorable = TRUE)
+cat("La solución por el criterio de Wald es la:", sol1Wlad$AlternativaOptima)
+```
+
+2. Criterio optimista
+
+```{r}
+sol1Opt=criterio.Optimista(tb01,favorable = TRUE)
+cat("La solución por el criterio Optimista es la:", sol1Opt$AlternativaOptima)
+```
+
+3. Criterio de Hurwitcz
+```{r}
+sol1Hur=criterio.Hurwicz(tb01,favorable = TRUE)
+cat("La solución por el criterio de Hurwitcz es la:", sol1Hur$AlternativaOptima)
+```
+
+```{r,fig.dim=0.4}
+dibuja.criterio.Hurwicz(tb01,favorable = TRUE)
+```
+
+
+4. Criterio de Savage
+```{r}
+sol1Sav=criterio.Savage(tb01,favorable = TRUE)
+cat("La solución por el criterio de Savage es la:", sol1Sav$AlternativaOptima)
+```
+
+
+5. Criterio de Lapalce
+
+```{r}
+sol1Lap=criterio.Laplace(tb01,favorable = TRUE)
+cat("La solución por el criterio Laplace es la:", sol1Lap$AlternativaOptima)
+```
+
+
+7. Criterio del punto ideal
+
+```{r}
+sol1PuntId=criterio.PuntoIdeal(tb01,favorable = TRUE)
+cat("La solución por el criterio del Punto Ideal es la:", sol1PuntId$AlternativaOptima)
+
+```
+
+8. Criterios todos
+
+```{r}
+sol1Todos=criterio.Todos(tb01,favorable = T, alfa = 0.5)
+knitr::kable(sol1Todos[,6:ncol(sol1Todos)])
+```
+
+
+###  Desde el punto de vista DESFAVORABLE o de COSTES
+
+1. Criterio de Wald
+
+```{r}
+sol2Wlad=criterio.Wald(tb01,favorable = FALSE)
+cat("La solución por el criterio de Wald es la:", sol2Wlad$AlternativaOptima)
+```
+
+2. Criterio optimista
+
+```{r}
+sol2Opt=criterio.Optimista(tb01,favorable = FALSE)
+cat("La solución por el criterio Optimista es la:", sol2Opt$AlternativaOptima)
+```
+
+
+\newpage
+3. Criterio de Hurwitcz
+```{r}
+sol2Hur1=criterio.Hurwicz(tb01,favorable = FALSE,alfa = 0.4)
+cat("La solución por el criterio de Hurwitcz es la:", sol2Hur1$AlternativaOptima)
+```
+
+```{r}
+sol2Hur2= criterio.Hurwicz.General(tb01,favorable = FALSE, alfa = 0.4)
+dibuja.criterio.Hurwicz(tb01,favorable = FALSE)
+```
+
+
+4. Criterio de Savage
+```{r}
+sol2Sav=criterio.Savage(tb01,favorable = FALSE)
+cat("La solución por el criterio de Savage es la:", sol2Sav$AlternativaOptima)
+```
+
+
+5. Criterio de Lapalce
+
+```{r}
+sol2Lap=criterio.Laplace(tb01,favorable = FALSE)
+cat("La solución por el criterio Laplace es la:", sol2Lap$AlternativaOptima)
+```
+
+
+6. Criterio del punto ideal
+
+```{r}
+sol2PuntId=criterio.PuntoIdeal(tb01,favorable = FALSE)
+cat("La solución por el criterio del Punto Ideal es la:", sol2PuntId$AlternativaOptima)
+
+```
+
+7. Criterios todos
+
+```{r}
+sol2Todos=criterio.Todos(tb01,favorable = FALSE, alfa = 0.5)
+knitr::kable(sol2Todos[,6:ncol(sol2Todos)])
+```
+
+\newpage
+
+## Problema 2
+
+El equipo ARUS de Formula Student de la Universidad de Sevilla está evaluando a qué competición asistir este año. Actualmente, tienen tres opciones disponibles, y cada una tiene características distintas en términos de coste, nivel de competencia y beneficios potenciales:
+Para acceder a cada una se debe pagar una cuota de inscripción 
+
+**Competición en Barcelona:** La cuota de inscripción es de 2,000 euros y el coste de transporte es bajo ya que no saldrían de España, aproximadamente de unos 1,000 euros. El equipo espera obtener buenos resultados aquí ya que se encuentran en casa, en caso de ganar, podrían conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia es medio bajo teniendo muchas posibilidades de quedar entre los primeros.
+
+**Competición en Hockenheim (Alemania):** Es una de la competición más prestigiosa, esto se ve reflejado en su cuota de inscripción que es de 3,500 euros. Además el coste de transporte debido a las escasas conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los primeros puestos, podrían conseguir un premio de 10,000 euros.Una increible recompensa que sumada al orgullo de ganarla es un gran aliciente. 
+
+**Competición en Assen (Paises Bajos):** El coste de inscripción es intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es una competición con buen reconocimiento pero que no lleva tantos años celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y el nivel de competencia también es alto.
+
+¿A qué competición le recomendarías a la directiva del equipo asistir?
+
+```{r}
+tb02= crea.tablaX(c(2000,-3000,
+                    2500,-7500,
+                    700,-6300),numalternativas = 3,numestados = 2)
+```
+```{r}
+solp2=criterio.Todos(tb02,alfa = 0.3,favorable = FALSE)
+knitr::kable(solp2[,3:ncol(solp2)])
+
+```
+
+
+
+\newpage
+
+# Roberto González Lozano
+
+## Problema 1
+
+## Problema 2
+
+\newpage
+
+# Belén Puertas Gonzalez
+
+## Problema 1
+
+## Problema 2
+
+\newpage
+
+# María del Rosario Ruiz Avila
+
+## Problema 1
+
+## Problema 2
+
+
