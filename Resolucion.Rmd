@@ -238,6 +238,20 @@ knitr::kable(solp2[,3:ncol(solp2)])
 # María del Rosario Ruiz Avila
 
 ## Problema 1
+Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos viene dada en la tabla siguiente:
+
+```{r}
+tabla_decision <- matrix(c(7, 5, 8,   # Publicidad TV
+                           4, 6, 3,   # Publicidad Online
+                           2, 9, 7,   # Eventos Presenciales
+                           5, 4, 6),  # Influencers
+                         nrow = 4, byrow = TRUE)
+
+rownames(tabla_decision) <- c("Publicidad TV", "Publicidad Online", "Eventos Presenciales", "Influencers")
+colnames(tabla_decision) <- c("Mercado Local", "Mercado Internacional", "Nuevas Tecnologías")
+tabla_decision
+```
+
 
 ## Problema 2
 
