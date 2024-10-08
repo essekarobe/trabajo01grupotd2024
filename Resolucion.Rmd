@@ -239,7 +239,7 @@ knitr::kable(solp2[,3:ncol(solp2)])
 
 ## Problema 1
 Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos viene dada en la tabla siguiente:
-
+Creamos la matriz de decisión:
 ```{r}
 tabla_decision <- matrix(c(7, 5, 8,   # Publicidad TV
                            4, 6, 3,   # Publicidad Online
@@ -251,8 +251,133 @@ rownames(tabla_decision) <- c("Publicidad TV", "Publicidad Online", "Eventos Pre
 colnames(tabla_decision) <- c("Mercado Local", "Mercado Internacional", "Nuevas Tecnologías")
 tabla_decision
 ```
+Donde las estrategias son los tipos de publicidad y los estados de la naturaleza los mercados considerar:
+a)Beneficios (favorable)
+Criterio de wald: Selecciona la estrategia que tenga el mayor de los valores mínimos, siendo conservador.
+```{r}
+s01_wald = criterio.Wald(tabla_decision,T)
+s01_wald
+names(s01_wald$AlternativaOptima)
+```
+Criterio Optimista: Este criterio selecciona la estrategia con el mejor resultado posible, siendo muy optimista.
+```{r}
+s01_optima=criterio.Optimista(tabla_decision,T)
+s01_optima
+names(s01_optima$AlternativaOptima)
+```
+Criterio  Hurwicz:ombina el optimismo y el pesimismo mediante un coeficiente alfa (en este caso, 0.4, lo que significa que se considera más pesimismo).
+```{r}
+s01_hurwitz=criterio.Hurwicz(tabla_decision,alfa=0.4,T)
+s01_hurwitz
+names(s01_hurwitz$AlternativaOptima)
+```
+Criterio Savage: Minimiza el arrepentimiento, es decir, la diferencia entre lo que se obtuvo y lo que podría haberse obtenido en el mejor escenario.
+```{r}
+s01_savage=criterio.Savage(tabla_decision,T)
+s01_savage
+names(s01_savage$AlternativaOptima)
+```
+Criterio Laplace:Considera que todos los estados de la naturaleza son igualmente probables.
+```{r}
+s01_laplace=criterio.Laplace(tabla_decision,T)
+names(s01_laplace$AlternativaOptima)
+s01_laplace$ValorAlternativas
+```
+Criterio Punto Ideal: Compara las alternativas con un "punto ideal" en el que se maximiza todo.
+```{r}
+s01_pid=criterio.PuntoIdeal(tabla_decision,T)
+s01_pid$AlternativaOptima
+s01_pid$ValorAlternativas
+```
+Todos los criterios:
+```{r}
+s01_todos=criterio.Todos(tabla_decision,alfa=0.5,T)
+s01_todos
+dibuja.criterio.Hurwicz(tabla_decision,T)
+dibuja.criterio.Hurwicz_Intervalos(tabla_decision,T)
+```
+En todos los casos la mejor estrategia es la Publicidad en TV, excepto en el criterio optimista que la estrategia son los Eventos Presenciales. 
 
+b)Costos (desfavorable)
+Criterio de wald
+```{r}
+s01_wald = criterio.Wald(tabla_decision,F)
+names(s01_wald$AlternativaOptima)
+```
+Criterio Optimista
+```{r}
+s01_optima=criterio.Optimista(tabla_decision,F)
+names(s01_optima$AlternativaOptima)
+```
+Criterio  Hurwicz
+```{r}
+s01_hurwicz=criterio.Hurwicz(tabla_decision,alfa=0.4,F)
+names(s01_hurwitz$AlternativaOptima)
+```
+Criterio Savage
+```{r}
+s01_savage=criterio.Savage(tabla_decision,F)
+names(s01_savage$AlternativaOptima)
+```
+Criterio Laplace
+```{r}
+s01_laplace=criterio.Laplace(tabla_decision,F)
+names(s01_laplace$AlternativaOptima)
+s01_laplace$ValorAlternativas
+```
+Criterio Punto Ideal
+```{r}
+s01_pid=criterio.PuntoIdeal(tabla_decision,F)
+s01_pid$AlternativaOptima
+s01_pid$ValorAlternativas
+```
+Todos los criterios:
+```{r}
+s01_todos=criterio.Todos(tabla_decision,alfa=0.5,F)
+s01_todos
+dibuja.criterio.Hurwicz(tabla_decision,F)
+dibuja.criterio.Hurwicz_Intervalos(tabla_decision,F)
+```
+En 5 de los criterios la mejor opción es la Publicidad Online para minimizar los costos. El criterio de Wald tiene dos soluciones, la anterior y la estrategia de Influencers. Por otro lado, el criterio optimista repite con Eventos Presenciales. 
 
 ## Problema 2
+Dos amigos, Claudia y Mario, están planeando abrir una pequeña cafetería. Han ahorrado 1500 euros cada uno y quieren decidir qué enfoque darle al negocio. Existen tres opciones según el tipo de menú que ofrezcan: Un menú básico, un menú saludable o un menú gourmet. Dependiendo de la situación económica y las tendencias alimentarias, la demanda puede aumentar o disminuir, lo que afectará sus ingresos.
 
+Si eligen un menú básico, tendrán un flujo constante de clientes, pero los márgenes de ganancia serán bajos, con una ganancia o pérdida del 5%.
+
+Si eligen un menú saludable, pueden atraer a un nicho de clientes en crecimiento, pero la inversión en ingredientes será mayor, y podrían obtener una ganancia del 12% si la tendencia continúa, o perder un 8% si la tendencia no se mantiene.
+
+Si optan por un menú gourmet, el riesgo es mayor porque depende de la clientela de alto poder adquisitivo, lo que les permitirá obtener una ganancia del 20% si la economía es favorable, pero podrían perder un 15% si la economía se desacelera.
+Claudia es más conservadora y prefiere minimizar los riesgos, mientras que Mario está dispuesto a asumir más riesgos confiando en que la economía mejorará.
+
+¿Qué tipo de menú elegiría cada uno de ellos según sus actitudes hacia el riesgo?
+Estado e1 (Demanda favorable)
+```{r}
+n11 = 1500 * 0.05     # Menú básico
+n21 = 1500 * 0.12     # Menú saludable
+n31 = 1500 * 0.20     # Menú gourmet
+```
+Estado e2 (Demanda desfavorable)
+```{r}
+n12 = -1500 * 0.05    # Menú básico
+n22 = -1500 * 0.08    # Menú saludable
+n32 = -1500 * 0.15    # Menú gourmet
+```
+Crear la tabla de decisión
+```{r}
+tb_decision = crea.tablaX(c(n11, n12,
+                            n21, n22,
+                            n31, n32), 3, 2)
+```
+Aplicar los criterios de decisión
+```{r}
+res_decision = criterio.Todos(tb_decision, alfa = 0.5, favorable = TRUE)
+```
+Mostrar los resultados en formato tabla
+```{r}
+knitr::kable(res_decision)
+```
+Claudia es conservadora y busca minimizar las posibles pérdidas. Aplicando el criterio de Wald o Minimax, probablemente seleccione la opción del menú básico, que ofrece la menor pérdida en el peor escenario (-75 euros). 
+Mario es más arriesgado y busca maximizar sus posibles ganancias. Aplicando el criterio optimista (Maximax), seleccionará el menú gourmet, que le podría dar la mayor ganancia en el mejor escenario (300 euros).
+Claudia optará por un menú básico y Mario por un menú gourmet. 
 
