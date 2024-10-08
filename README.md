@@ -3,14 +3,14 @@
 - Laura Mayorgas del Castillo
 - Roberto González Lozano
 - Belén Puerta González
-- María del Rosario Ruiz Avila
+- María del Rosario Ruiz Ávila
 
 ## Descripción: 
 En este trabajo se pretende asentar los conocimientos de clase mediante la resolución de dos problemas inventados haciendo uso de las distintos criterios de **toma de decisión bajo incertidumbtre**. 
 En el primero se resuelve una tabla de decisión desde los dos posibles puntos de vista: 
 	
  ##### **- Favorable:** 
- Posicionandonos en este pensamiento consideramos que los datos que nos dan son los beneficios posibles a obtener a la hora de escoger esa alternativa 
+ Posicionándonos en este pensamiento consideramos que los datos que nos dan son los beneficios posibles a obtener a la hora de escoger esa alternativa 
  ##### 	**- Desfavorable:**
   Este sería el pensamiento análogo al anterior. Los datos de la matriz de decisión se consideran costos. 
 
