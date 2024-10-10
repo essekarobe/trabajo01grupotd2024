@@ -366,6 +366,7 @@ En el escenario desfavorable, es decir, considerando que los datos son costes, p
 
 
 
+
 ## Problema 2
 Un inversionista ha decidido analizar diversas opciones de 
 inversión, ya que busca maximizar sus ganancias bajo distintos 
