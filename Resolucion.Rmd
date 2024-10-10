@@ -227,11 +227,191 @@ knitr::kable(solp2[,3:ncol(solp2)])
 
 \newpage
 
-# Belén Puertas Gonzalez
+# Belén Puerta González
 
 ## Problema 1
 
+Aplicar los criterios de decisión bajo incertidumbre a la siguiente matriz de valores:
+
+```{r, echo=FALSE}
+datos <- data.frame(
+  row.names = c("d1", "d2", "d3", "d4", "d5"),
+  e1 = c(5, 12, 10, 13, 5),
+  e2 = c(3, 6, 4, 4, 8),
+  e3 = c(-1, 6, 8, 1, 10)
+)
+knitr::kable(datos)
+```
+
+Resolver primero para el caso FAVORABLE (beneficios) y, posteriormente, para el caso DESFAVORABLE (costos).
+
+
+### CASO FAVORABLE
+**1. Criterio de Wald**
+
+```{r}
+p1_pes_FAV = criterio.Wald(datos,T)
+names(p1_pes_FAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d2.
+```
+
+**2. Criterio optimista**
+
+```{r}
+p1_opt_FAV = criterio.Optimista(datos,T)
+names(p1_opt_FAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d4.
+```
+
+**3. Criterio de Hurwitcz**
+
+```{r}
+p1_hur_FAV = criterio.Hurwicz(datos,T)
+names(p1_hur_FAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d4.
+```
+
+```{r,fig.dim=0.4}
+dibuja.criterio.Hurwicz(datos, T)
+```
+
+**4. Criterio de Savage**
+
+```{r}
+p1_sav_FAV = criterio.Savage(datos,T)
+names(p1_sav_FAV$AlternativaOptima) 
+# La mejor decisión son las alternativas d2 y d3.
+```
+
+**5. Criterio de Laplace**
+
+```{r}
+p1_lap_FAV = criterio.Laplace(datos,T)
+names(p1_lap_FAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d2.
+```
+
+**6. Criterio del punto ideal**
+
+```{r}
+p1_pid_FAV = criterio.PuntoIdeal(datos,T)
+names(p1_pid_FAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d2.
+```
+
+
+***CONCLUSIÓN FINAL:***
+En el escenario favorable, es decir, considerando que los datos son beneficios, podemos observar que mayoritariamente la alternativa d2 es la más elegida.
+
+
+
+### CASO DESFAVORABLE
+**1. Criterio de Wald**
+
+```{r}
+p1_pes_DESFAV = criterio.Wald(datos,F)
+names(p1_pes_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d1.
+```
+
+**2. Criterio optimista**
+
+```{r}
+p1_opt_DESFAV = criterio.Optimista(datos,F)
+names(p1_opt_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d1.
+```
+
+**3. Criterio de Hurwitcz**
+
+```{r}
+p1_hur_DESFAV = criterio.Hurwicz(datos,F)
+names(p1_hur_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d2.
+```
+
+```{r,fig.dim=0.4}
+dibuja.criterio.Hurwicz(datos,F)
+```
+
+
+**4. Criterio de Savage**
+
+```{r}
+p1_sav_DESFAV = criterio.Savage(datos,F)
+names(p1_sav_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d1.
+```
+
+**5. Criterio de Laplace**
+
+```{r}
+p1_lap_DESFAV = criterio.Laplace(datos,F)
+names(p1_lap_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d1.
+```
+
+**6. Criterio del punto ideal**
+
+```{r}
+p1_pid_DESFAV = criterio.PuntoIdeal(datos,F)
+names(p1_pid_DESFAV$AlternativaOptima) 
+# La mejor decisión es la alternativa d1.
+```
+
+
+***CONCLUSIÓN FINAL:***
+En el escenario desfavorable, es decir, considerando que los datos son costes, podemos observar que mayoritariamente la alternativa d1 es la más elegida.
+
+
+
+
 ## Problema 2
+Un inversionista ha decidido analizar diversas opciones de 
+inversión, ya que busca maximizar sus ganancias bajo distintos 
+escenarios del mercado. Tras meses de estudio y consultas con 
+expertos financieros, ha reducido sus opciones a cuatro activos 
+financieros que, según su análisis, presentan distintas 
+oportunidades de rendimiento. 
+
+Ha identificado tres posibles escenarios del mercado: mercado 
+alcista, en el que se espera un crecimiento considerable de la 
+economía; mercado estable, donde los rendimientos se mantendrán 
+sin grandes cambios; y mercado bajista, en el que la economía 
+enfrentará dificultades.
+
+Con base en las proyecciones actuales, los rendimientos 
+estimados para cada activo bajo estos escenarios, expresados en 
+millones de euros, son los siguientes:
+
+* **Acciones tecnológicas**: en un escenario alcista generarían 15 
+                        millones, en un mercado estable producirían 
+                        7 millones, y en un mercado bajista solo 
+                        darían 1 millón. Este tipo de activo se ha 
+                        caracterizadompor su enorme potencial en épocas 
+                        de bonanza.
+ 
+ * **Bonos del gobierno**: se proyecta que generen un rendimiento 
+                      constante de 5 millones sin importar el estado 
+                      del mercado. Se consideran una opción de bajo 
+                      riesgo, especialmente en tiempos de incertidumbre, 
+                      debido a su estabilidad.
+ 
+ * **Fondos de bienes raíces**: bajo un mercado alcista podrían proporcionar 
+                           un rendimiento de 10 millones, en un mercado 
+                           estable 6 millones, y en un escenario bajista 
+                           2 millones. 
+ 
+ * **Criptomonedas**: en un mercado alcista su rentabilidad podría alcanzar 
+                  los 25 millones, en un mercado estable solo generarían 
+                  3 millones, y en un mercado bajista apenas 1 millón. 
+                  Este activo es conocido por su alta volatilidad.
+ 
+ Dado este panorama y los rendimientos proyectados, ¿cuál sería la opción 
+ más adecuada que recomendarías al inversionista?
+
+
+
 
 \newpage
 
