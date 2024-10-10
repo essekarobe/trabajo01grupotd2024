@@ -412,6 +412,26 @@ millones de euros, son los siguientes:
  más adecuada que recomendarías al inversionista?
 
 
+```{r}
+datos2 = crea.tablaX(c(15, 7, 1,
+                       5,  5, 5,
+                       10, 6, 2,
+                       25, 3, 1), numalternativas = 4, numestados = 3)
+knitr::kable(datos2)
+
+Alternativa = criterio.Todos(datos2, favorable = T) 
+# El inversionista tiene margen de elección para buscar maximizar 
+# ganancias, lo que indica un problema en una situación favorable.
+```
+```{r}
+knitr::kable(Alternativa[,4:ncol(Alternativa)])
+
+```
+
+***CONCLUSIÓN***: Podemos observar que, mayoritariamente la mejor alternativa serían las criptomonedas. Tan solo en el criterio de Wald, se obtiene que la mejor
+alternativa serían los bonos del gobierno.
+
+
 
 
 \newpage
