@@ -22,7 +22,7 @@ En el primero se resuelve una tabla de decisión desde los dos posibles puntos d
 
 ***nota: Estos dos últimos archivos vienen dados tanto en estensión .Rmd como en .pdf para su más fácil lectura.***
 - **teoriadecision_funciones_incertidumbre.R**: Archivo que contiene todas las funciones para definir los distintos criterios. Es necesaria para poder ejecutar el código. Se puede acceder a él medianete el uso de un *source()*.
-- **trabajo01indtd2024.Rproj**: Extensión del proyecto de R para poder trabajar de forma más sencilla.Contiene varias opciones de proyecto. También se puede utilizar como acceso directo para abrir el proyecto directamente desde el sistema de archivos .
+- **trabajo01grupotd2024.Rproj**: Extensión del proyecto de R para poder trabajar de forma más sencilla.Contiene varias opciones de proyecto. También se puede utilizar como acceso directo para abrir el proyecto directamente desde el sistema de archivos .
 
 
 ## Descripción de los problemas:
