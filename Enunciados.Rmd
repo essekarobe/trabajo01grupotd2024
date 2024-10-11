@@ -45,11 +45,11 @@ b) Desde el punto de vista DESFAVORABLE
 El equipo ARUS de Formula Student de la Universidad de Sevilla está evaluando a qué competición asistir este año. Actualmente, tienen tres opciones disponibles, y cada una tiene características distintas en términos de coste, nivel de competencia y beneficios potenciales:
 Para acceder a cada una se debe pagar una cuota de inscripción 
 
-**Competición en Barcelona:** La cuota de inscripción es de 2,000 euros y el coste de transporte es bajo ya que no saldrían de España, aproximadamente de unos 1,000 euros. El equipo espera obtener buenos resultados aquí ya que se encuentran en casa, en caso de ganar, podrían conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia es medio bajo teniendo muchas posibilidades de quedar entre los primeros.
+- **Competición en Barcelona:** La cuota de inscripción es de 2,000 euros y el coste de transporte es bajo ya que no saldrían de España, aproximadamente de unos 1,000 euros. El equipo espera obtener buenos resultados aquí ya que se encuentran en casa, en caso de ganar, podrían conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia es medio bajo teniendo muchas posibilidades de quedar entre los primeros.
 
-**Competición en Hockenheim (Alemania):** Es una de la competición más prestigiosa, esto se ve reflejado en su cuota de inscripción que es de 3,500 euros. Además el coste de transporte debido a las escasas conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los primeros puestos, podrían conseguir un premio de 10,000 euros.Una increible recompensa que sumada al orgullo de ganarla es un gran aliciente. 
+- **Competición en Hockenheim (Alemania):** Es una de la competición más prestigiosa, esto se ve reflejado en su cuota de inscripción que es de 3,500 euros. Además el coste de transporte debido a las escasas conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los primeros puestos, podrían conseguir un premio de 10,000 euros.Una increible recompensa que sumada al orgullo de ganarla es un gran aliciente. 
 
-**Competición en Assen (Paises Bajos):** El coste de inscripción es intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es una competición con buen reconocimiento pero que no lleva tantos años celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y el nivel de competencia también es alto.
+- **Competición en Assen (Paises Bajos):** El coste de inscripción es intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es una competición con buen reconocimiento pero que no lleva tantos años celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y el nivel de competencia también es alto.
 
 ¿A qué competición le recomendarías a la directiva del equipo asistir?
 
@@ -136,7 +136,7 @@ millones de euros, son los siguientes:
 ## Problema 1
 Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos viene dada en la tabla siguiente:
 Creamos la matriz de decisión:
-```{r}
+```{r,echo=FALSE}
 tabla_decision <- matrix(c(7, 5, 8,   # Publicidad TV
                            4, 6, 3,   # Publicidad Online
                            2, 9, 7,   # Eventos Presenciales
@@ -145,7 +145,8 @@ tabla_decision <- matrix(c(7, 5, 8,   # Publicidad TV
 
 rownames(tabla_decision) <- c("Publicidad TV", "Publicidad Online", "Eventos Presenciales", "Influencers")
 colnames(tabla_decision) <- c("Mercado Local", "Mercado Internacional", "Nuevas Tecnologías")
-tabla_decision
+
+knitr::kable(tabla_decision)
 ```
 Donde las estrategias son los tipos de publicidad y los estados de la naturaleza los mercados considerar:
 a)Beneficios (favorable)
