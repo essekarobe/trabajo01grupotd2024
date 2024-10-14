@@ -14,6 +14,11 @@ En el primero se resuelve una tabla de decisión desde los dos posibles puntos d
  ##### 	**- Desfavorable:**
   Este sería el pensamiento análogo al anterior. Los datos de la matriz de decisión se consideran costos. 
 
+
+## Organización: 
+Cada uno de los integrantes ha redactado sus problemas en un fichero individual y posteriormente se ha creado un documento .Rmd en el que escalonadamente se ha ido subiendo el contenido completo y ordenado de cada participante. 
+Después hemos revisado el trabajo de cada compañero intentando buscar erratas y mejoras añadiendo *"issues"* para poder plasmar estas mismas. 
+
 ## Contenido: 
 - **.gitignore:** Archivo que contienen patrones que establecen coincidencias con los nombres de archivo del repositorio para determinar si deberían ignorarse o no.
   *(No prestar realmente atención)*
