@@ -7,6 +7,7 @@ output:
     toc_depth: 5
 lang: es
 number-sections: true
+encoding: UTF-8
 toc: true
 ---
 \newpage
