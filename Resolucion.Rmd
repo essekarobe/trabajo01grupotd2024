@@ -351,7 +351,7 @@ todosSCG2
 
 ```
 
-**Por tanto, en caso desfavorable, selecciono la alternativa d2.**
+**Por tanto, en el caso desfavorable, selecciono la alternativa d2.**
 
 ## Problema 2:
 

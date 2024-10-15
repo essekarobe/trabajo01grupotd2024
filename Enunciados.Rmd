@@ -121,7 +121,6 @@ knitr::kable(datos)
 
 Resolver primero para el caso FAVORABLE (beneficios) y, posteriormente, para el caso DESFAVORABLE (costos).
 
-
 ## Problema 2
 Un inversionista ha decidido analizar diversas opciones de 
 inversión, ya que busca maximizar sus ganancias bajo distintos 
