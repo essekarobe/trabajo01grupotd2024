@@ -1,0 +1,2544 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{spanish}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Resolución Problemas},
+  pdflang={es},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Resolución Problemas}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{5}
+\tableofcontents
+}
+\newpage
+
+\section{Laura Mayorgasdel Castillo}\label{laura-mayorgasdel-castillo}
+
+\subsection{Problema 1}\label{problema-1}
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos vienen dadas en la tabla siguiente:
+
+\begin{longtable}[]{@{}lrrrr@{}}
+\toprule\noalign{}
+& e1 & e2 & e3 & e4 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 4 & 3 & -4 & 4 \\
+d2 & 5 & -1 & 9 & 6 \\
+d3 & -3 & 3 & 8 & 7 \\
+d4 & 7 & 7 & 2 & -9 \\
+d5 & 8 & 9 & 1 & 3 \\
+\end{longtable}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Desde el punto de vista FAVORABLE
+\item
+  Desde el punto de vista DESFAVORABLE
+\end{enumerate}
+
+\subsubsection{Desde el punto de vista FAVORABLE o
+BENEFICIOS}\label{desde-el-punto-de-vista-favorable-o-beneficios}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tb01}\OtherTok{=} \FunctionTok{crea.tablaX}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}
+                    \DecValTok{3}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{9}\NormalTok{,}
+                    \SpecialCharTok{{-}}\DecValTok{4}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{,}
+                    \DecValTok{4}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{),}\AttributeTok{numalternativas =} \DecValTok{4}\NormalTok{,}\AttributeTok{numestados =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Criterio de Wald
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Wlad}\OtherTok{=}\FunctionTok{criterio.Wald}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Wald es la:"}\NormalTok{, sol1Wlad}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Wald es la: 2
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Criterio optimista
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Opt}\OtherTok{=}\FunctionTok{criterio.Optimista}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio Optimista es la:"}\NormalTok{, sol1Opt}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio Optimista es la: 2 3
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Criterio de Hurwitcz
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Hur}\OtherTok{=}\FunctionTok{criterio.Hurwicz}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Hurwitcz es la:"}\NormalTok{, sol1Hur}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Hurwitcz es la: 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Criterio de Savage
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Sav}\OtherTok{=}\FunctionTok{criterio.Savage}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Savage es la:"}\NormalTok{, sol1Sav}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Savage es la: 3
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Criterio de Lapalce
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Lap}\OtherTok{=}\FunctionTok{criterio.Laplace}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio Laplace es la:"}\NormalTok{, sol1Lap}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio Laplace es la: 1 2
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Criterio del punto ideal
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1PuntId}\OtherTok{=}\FunctionTok{criterio.PuntoIdeal}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio del Punto Ideal es la:"}\NormalTok{, sol1PuntId}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio del Punto Ideal es la: 2
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\tightlist
+\item
+  Criterios todos
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol1Todos}\OtherTok{=}\FunctionTok{criterio.Todos}\NormalTok{(tb01,}\AttributeTok{favorable =}\NormalTok{ T, }\AttributeTok{alfa =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(sol1Todos[,}\DecValTok{6}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(sol1Todos)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2424}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0758}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1515}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1212}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1061}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1212}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1818}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wald
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Optimista
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hurwicz
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Savage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Laplace
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Punto Ideal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & -3 & 8 & 2.5 & 11 & 4.2 & 11.75 \\
+d2 & -1 & 9 & 4.0 & 10 & 4.2 & 11.22 \\
+d3 & -4 & 9 & 2.5 & 8 & 3.2 & 12.37 \\
+d4 & -9 & 7 & -1.0 & 16 & 2.2 & 17.38 \\
+iAlt.Opt (fav.) & d2 & d2,d3 & d2 & d3 & d1,d2 & d2 \\
+\end{longtable}
+
+\subsubsection{Desde el punto de vista DESFAVORABLE o de
+COSTES}\label{desde-el-punto-de-vista-desfavorable-o-de-costes}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Criterio de Wald
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Wlad}\OtherTok{=}\FunctionTok{criterio.Wald}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Wald es la:"}\NormalTok{, sol2Wlad}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Wald es la: 4
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Criterio optimista
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Opt}\OtherTok{=}\FunctionTok{criterio.Optimista}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio Optimista es la:"}\NormalTok{, sol2Opt}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio Optimista es la: 4
+\end{verbatim}
+
+\newpage
+3
+
+. Criterio de Hurwitcz
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Hur1}\OtherTok{=}\FunctionTok{criterio.Hurwicz}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{,}\AttributeTok{alfa =} \FloatTok{0.4}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Hurwitcz es la:"}\NormalTok{, sol2Hur1}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Hurwitcz es la: 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Hur2}\OtherTok{=} \FunctionTok{criterio.Hurwicz.General}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{alfa =} \FloatTok{0.4}\NormalTok{)}
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Criterio de Savage
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Sav}\OtherTok{=}\FunctionTok{criterio.Savage}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio de Savage es la:"}\NormalTok{, sol2Sav}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio de Savage es la: 4
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Criterio de Lapalce
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Lap}\OtherTok{=}\FunctionTok{criterio.Laplace}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio Laplace es la:"}\NormalTok{, sol2Lap}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio Laplace es la: 4
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Criterio del punto ideal
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2PuntId}\OtherTok{=}\FunctionTok{criterio.PuntoIdeal}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"La solución por el criterio del Punto Ideal es la:"}\NormalTok{, sol2PuntId}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## La solución por el criterio del Punto Ideal es la: 4
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Criterios todos
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sol2Todos}\OtherTok{=}\FunctionTok{criterio.Todos}\NormalTok{(tb01,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{alfa =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(sol2Todos[,}\DecValTok{6}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(sol2Todos)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2754}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0725}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1449}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1159}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1014}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1159}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1739}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wald
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Optimista
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hurwicz
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Savage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Laplace
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Punto Ideal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 8 & -3 & 2.5 & 16 & 4.2 & 20.12 \\
+d2 & 9 & -1 & 4.0 & 16 & 4.2 & 20.12 \\
+d3 & 9 & -4 & 2.5 & 11 & 3.2 & 18.49 \\
+d4 & 7 & -9 & -1.0 & 10 & 2.2 & 14.73 \\
+iAlt.Opt (Desfav.) & d4 & d4 & d4 & d4 & d4 & d4 \\
+\end{longtable}
+
+\newpage
+
+\subsection{Problema 2}\label{problema-2}
+
+El equipo ARUS de Formula Student de la Universidad de Sevilla está
+evaluando a qué competición asistir este año. Actualmente, tienen tres
+opciones disponibles, y cada una tiene características distintas en
+términos de coste, nivel de competencia y beneficios potenciales: Para
+acceder a cada una se debe pagar una cuota de inscripción
+
+\textbf{Competición en Barcelona:} La cuota de inscripción es de 2,000
+euros y el coste de transporte es bajo ya que no saldrían de España,
+aproximadamente de unos 1,000 euros. El equipo espera obtener buenos
+resultados aquí ya que se encuentran en casa, en caso de ganar, podrían
+conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia
+es medio bajo teniendo muchas posibilidades de quedar entre los
+primeros.
+
+\textbf{Competición en Hockenheim (Alemania):} Es una de la competición
+más prestigiosa, esto se ve reflejado en su cuota de inscripción que es
+de 3,500 euros. Además el coste de transporte debido a las escasas
+conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los
+primeros puestos, podrían conseguir un premio de 10,000 euros.Una
+increible recompensa que sumada al orgullo de ganarla es un gran
+aliciente.
+
+\textbf{Competición en Assen (Paises Bajos):} El coste de inscripción es
+intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es
+una competición con buen reconocimiento pero que no lleva tantos años
+celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y
+el nivel de competencia también es alto.
+
+¿A qué competición le recomendarías a la directiva del equipo asistir?
+
+Costes y premios: o Competición en España:
+
+\begin{verbatim}
+-   Coste total: 2,000 € (inscripción) + 1,000 € (transporte) = 3,000 €
+-   Premio si gana: 5,000 €
+-   Beneficio neto si gana: 5,000 - 3,000 = 2,000 €
+-   Beneficio neto si no gana: -3,000 € (pérdida de costes)
+\end{verbatim}
+
+o Competición en Alemania:
+
+\begin{verbatim}
+- Coste total: 3,500 € (inscripción) + 4,000 € (transporte) = 7,500 €
+- Premio si gana: 10,000 €
+- Beneficio neto si gana: 10,000 - 7,500 = 2,500 €
+- Beneficio neto si no gana: -7,500 € (pérdida de costes)
+\end{verbatim}
+
+o Competición en Países Bajos:
+
+\begin{verbatim}
+- Coste total: 2,800 € (inscripción) + 3,500 € (transporte) = 6,300 €
+- Premio si gana: 7,000 €
+- Beneficio neto si gana: 7,000 - 6,300 = 700 €
+- Beneficio neto si no gana: -6,300 € (pérdida de costes)
+\end{verbatim}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tb02}\OtherTok{=} \FunctionTok{crea.tablaX}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2000}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{3000}\NormalTok{,}
+                    \DecValTok{2500}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{7500}\NormalTok{,}
+                    \DecValTok{700}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{6300}\NormalTok{),}\AttributeTok{numalternativas =} \DecValTok{3}\NormalTok{,}\AttributeTok{numestados =} \DecValTok{2}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(tb02)}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\StringTok{"España"}\NormalTok{,}\StringTok{"Alemania"}\NormalTok{,}\StringTok{"Paises Bajos"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(tb02)}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\StringTok{"Ganar"}\NormalTok{,}\StringTok{"Perder"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(tb02)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+& Ganar & Perder \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+España & 2000 & -3000 \\
+Alemania & 2500 & -7500 \\
+Paises Bajos & 700 & -6300 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{solp2}\OtherTok{=}\FunctionTok{criterio.Todos}\NormalTok{(tb02,}\AttributeTok{alfa =} \FloatTok{0.3}\NormalTok{,}\AttributeTok{favorable =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(solp2[,}\DecValTok{3}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(solp2)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2021}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1383}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1064}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1383}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1383}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1383}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1383}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wald
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Optimista
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hurwicz
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Savage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Laplace
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Punto Ideal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+España & 2000 & -3000 & 500 & 4500 & -500 & 4684 \\
+Alemania & 2500 & -7500 & -500 & 1800 & -2500 & 1800 \\
+Paises Bajos & 700 & -6300 & -1400 & 1200 & -2800 & 1200 \\
+iAlt.Opt (Desfav.) & Paises Bajos & Alemania & Paises Bajos & Paises
+Bajos & Paises Bajos & Paises Bajos \\
+\end{longtable}
+
+\newpage
+
+\section{Roberto González Lozano}\label{roberto-gonzuxe1lez-lozano}
+
+\subsection{Problema 1:}\label{problema-1-1}
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos vienen dadas en la tabla siguiente bajo
+dos puntos de vistas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tablaSCG}\OtherTok{=}\FunctionTok{crea.tablaX}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{2}\NormalTok{,}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{), }\AttributeTok{numalternativas =} \DecValTok{3}\NormalTok{,}\AttributeTok{numestados =} \DecValTok{4}\NormalTok{)}
+\NormalTok{tablaSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  \textbf{Caso Favorable (beneficios)}
+\item
+  \textbf{Caso Desfavorable (costes)}
+\end{enumerate}
+
+\subsubsection{Caso Favorable
+(beneficios)}\label{caso-favorable-beneficios}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Criterio de Wald}
+
+\NormalTok{waldSCG }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(tablaSCG,T)}
+\NormalTok{waldSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Wald"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  2 -2  1 
+## 
+## $ValorOptimo
+## [1] 2
+## 
+## $AlternativaOptima
+## d1 
+##  1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Optimista}
+
+\NormalTok{optimistaSCG }\OtherTok{=} \FunctionTok{criterio.Optimista}\NormalTok{(tablaSCG,T)}
+\NormalTok{optimistaSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Optimista"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  7  9  5 
+## 
+## $ValorOptimo
+## [1] 9
+## 
+## $AlternativaOptima
+## d2 
+##  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Hurwicz}
+
+\NormalTok{hurwiczSCG }\OtherTok{=} \FunctionTok{criterio.Hurwicz}\NormalTok{(tablaSCG, }\FloatTok{0.5}\NormalTok{, T)}
+\NormalTok{hurwiczSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Hurwicz"
+## 
+## $alfa
+## [1] 0.5
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+##  d1  d2  d3 
+## 4.5 3.5 3.0 
+## 
+## $ValorOptimo
+## [1] 4.5
+## 
+## $AlternativaOptima
+## d1 
+##  1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Savage}
+
+\NormalTok{savageSCG }\OtherTok{=} \FunctionTok{criterio.Savage}\NormalTok{(tablaSCG,T)}
+\NormalTok{savageSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Savage"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $Mejores
+## e1 e2 e3 e4 
+##  4  9  7  3 
+## 
+## $Pesos
+##    e1 e2 e3 e4
+## d1  2  4  0  1
+## d2  6  0  2  0
+## d3  0  4  4  2
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  4  6  4 
+## 
+## $ValorOptimo
+## [1] 4
+## 
+## $AlternativaOptima
+## d1 d3 
+##  1  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Laplace}
+
+\NormalTok{laplaceSCG }\OtherTok{=} \FunctionTok{criterio.Laplace}\NormalTok{(tablaSCG,T)}
+\NormalTok{laplaceSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Laplace"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+##   d1   d2   d3 
+## 4.00 3.75 3.25 
+## 
+## $ValorOptimo
+## [1] 4
+## 
+## $AlternativaOptima
+## d1 
+##  1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Punto Ideal}
+
+\NormalTok{pidealSCG }\OtherTok{=} \FunctionTok{criterio.PuntoIdeal}\NormalTok{(tablaSCG,T)}
+\NormalTok{pidealSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Punto Ideal"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $Mejores
+## e1 e2 e3 e4 
+##  4  9  7  3 
+## 
+## $ValorAlternativas
+##       d1       d2       d3 
+## 4.582576 6.324555 6.000000 
+## 
+## $ValorOptimo
+## [1] 4.582576
+## 
+## $AlternativaOptima
+## d1 
+##  1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Todos los criterios}
+
+\NormalTok{todosSCG }\OtherTok{=} \FunctionTok{criterio.Todos}\NormalTok{(tablaSCG, }\AttributeTok{alfa=}\FloatTok{0.5}\NormalTok{, }\AttributeTok{favorable =}\NormalTok{ T)}
+\NormalTok{todosSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 e1 e2 e3 e4 Wald Optimista Hurwicz Savage Laplace Punto Ideal
+## d1               2  5  7  2    2         7     4.5      4    4.00       4.583
+## d2              -2  9  5  3   -2         9     3.5      6    3.75       6.325
+## d3               4  5  3  1    1         5     3.0      4    3.25       6.000
+## iAlt.Opt (fav.) -- -- -- --   d1        d2      d1  d1,d3      d1          d1
+\end{verbatim}
+
+\textbf{Por tanto, en caso favorable, selecciono la alternativa d1.}
+
+\subsubsection{Caso Desfavorable
+(costes)}\label{caso-desfavorable-costes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Criterio de Wald}
+
+\NormalTok{waldSCG2 }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(tablaSCG,F)}
+\NormalTok{waldSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Wald"
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  7  9  5 
+## 
+## $ValorOptimo
+## [1] 5
+## 
+## $AlternativaOptima
+## d3 
+##  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Optimista}
+
+\NormalTok{optimistaSCG2 }\OtherTok{=} \FunctionTok{criterio.Optimista}\NormalTok{(tablaSCG,F)}
+\NormalTok{optimistaSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Optimista"
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  2 -2  1 
+## 
+## $ValorOptimo
+## [1] -2
+## 
+## $AlternativaOptima
+## d2 
+##  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Hurwicz}
+
+\NormalTok{hurwiczSCG2 }\OtherTok{=} \FunctionTok{criterio.Hurwicz}\NormalTok{(tablaSCG, }\FloatTok{0.5}\NormalTok{, F)}
+\NormalTok{hurwiczSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Hurwicz"
+## 
+## $alfa
+## [1] 0.5
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+##  d1  d2  d3 
+## 4.5 3.5 3.0 
+## 
+## $ValorOptimo
+## [1] 3
+## 
+## $AlternativaOptima
+## d3 
+##  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Savage}
+
+\NormalTok{savageSCG2 }\OtherTok{=} \FunctionTok{criterio.Savage}\NormalTok{(tablaSCG,F)}
+\NormalTok{savageSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Savage"
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $Mejores
+## e1 e2 e3 e4 
+## -2  5  3  1 
+## 
+## $Pesos
+##    e1 e2 e3 e4
+## d1  4  0  4  1
+## d2  0  4  2  2
+## d3  6  0  0  0
+## 
+## $ValorAlternativas
+## d1 d2 d3 
+##  4  4  6 
+## 
+## $ValorOptimo
+## [1] 4
+## 
+## $AlternativaOptima
+## d1 d2 
+##  1  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Laplace}
+
+\NormalTok{laplaceSCG2 }\OtherTok{=} \FunctionTok{criterio.Laplace}\NormalTok{(tablaSCG,F)}
+\NormalTok{laplaceSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Laplace"
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $ValorAlternativas
+##   d1   d2   d3 
+## 4.00 3.75 3.25 
+## 
+## $ValorOptimo
+## [1] 3.25
+## 
+## $AlternativaOptima
+## d3 
+##  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Punto Ideal}
+
+\NormalTok{pidealSCG2 }\OtherTok{=} \FunctionTok{criterio.PuntoIdeal}\NormalTok{(tablaSCG,F)}
+\NormalTok{pidealSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Punto Ideal"
+## 
+## $metodo
+## [1] "desfavorable"
+## 
+## $tablaX
+##    e1 e2 e3 e4
+## d1  2  5  7  2
+## d2 -2  9  5  3
+## d3  4  5  3  1
+## 
+## $Mejores
+## e1 e2 e3 e4 
+## -2  5  3  1 
+## 
+## $ValorAlternativas
+##       d1       d2       d3 
+## 5.744563 4.898979 6.000000 
+## 
+## $ValorOptimo
+## [1] 4.898979
+## 
+## $AlternativaOptima
+## d2 
+##  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Todos los criterios}
+
+\NormalTok{todosSCG2 }\OtherTok{=} \FunctionTok{criterio.Todos}\NormalTok{(tablaSCG, }\AttributeTok{alfa=}\FloatTok{0.5}\NormalTok{, }\AttributeTok{favorable =}\NormalTok{ F)}
+\NormalTok{todosSCG2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    e1 e2 e3 e4 Wald Optimista Hurwicz Savage Laplace
+## d1                  2  5  7  2    7         2     4.5      4    4.00
+## d2                 -2  9  5  3    9        -2     3.5      4    3.75
+## d3                  4  5  3  1    5         1     3.0      6    3.25
+## iAlt.Opt (Desfav.) -- -- -- --   d3        d2      d3  d1,d2      d3
+##                    Punto Ideal
+## d1                       5.745
+## d2                       4.899
+## d3                       6.000
+## iAlt.Opt (Desfav.)          d2
+\end{verbatim}
+
+\textbf{Por tanto, en caso desfavorable, selecciono la alternativa d2.}
+
+\subsection{Problema 2:}\label{problema-2-1}
+
+Luis De La Fuente, seleccionador internacional de España, debe presentar
+la lista de futbolistas convocados para la posiciones de delanteros de
+cara al Mundial 2026. Debe llevar 5 personas, y hasta ahora ya tiene 4
+seleccionadas. Para el último puesto que queda disponible, tiene tres
+futbolistas candidatas, los cuales tienen puntuaciones en cada uno de
+estas habilidades (pase, velocidad y gol, calculadas sobre 100):
+
+\begin{itemize}
+\item
+  \textbf{Ayoze} es un jugador del Villarreal que en pase tiene una
+  puntuación de 55, en velocidad 78 y en gol 81.
+\item
+  \textbf{Isi Palazón}, del Rayo Vallecano, tiene unas puntuaciones de
+  66 en pase, 77 en velocidad y 74 en gol.
+\item
+  \textbf{Samu Orodion}, del Oporto, tiene puntuación de 80 en pase, 62
+  en velocidad y 73 en gol.
+\end{itemize}
+
+Decidir qué futbolista debe ser convocado para el Mundial 2028.
+
+\textbf{Solución}
+
+1. Crear la matriz de datos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datosSCG }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =} \FunctionTok{c}\NormalTok{(}\DecValTok{55}\NormalTok{,}\DecValTok{78}\NormalTok{,}\DecValTok{81}\NormalTok{,}\DecValTok{66}\NormalTok{,}\DecValTok{77}\NormalTok{,}\DecValTok{74}\NormalTok{,}\DecValTok{80}\NormalTok{,}\DecValTok{62}\NormalTok{,}\DecValTok{73}\NormalTok{), }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =}\NormalTok{ T)}
+\FunctionTok{rownames}\NormalTok{(datosSCG) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Ayoze"}\NormalTok{, }\StringTok{"Isi Palazón"}\NormalTok{, }\StringTok{"Samu Orodion"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(datosSCG) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"pase"}\NormalTok{, }\StringTok{"velocidad"}\NormalTok{, }\StringTok{"gol"}\NormalTok{)}
+\NormalTok{datosSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+\end{verbatim}
+
+Estamos ante un problema de decisión de un solo decisor, que tiene un
+modelo de beneficios (caso favorable). Con los datos de la tabla
+anterior:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Criterio de Wald}
+
+\NormalTok{waldSCG }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(datosSCG,T)}
+\NormalTok{waldSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Wald"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##           55           66           62 
+## 
+## $ValorOptimo
+## [1] 66
+## 
+## $AlternativaOptima
+## Isi Palazón 
+##           2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Optimista}
+
+\NormalTok{optimistaSCG }\OtherTok{=} \FunctionTok{criterio.Optimista}\NormalTok{(datosSCG,T)}
+\NormalTok{optimistaSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Optimista"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##           81           77           80 
+## 
+## $ValorOptimo
+## [1] 81
+## 
+## $AlternativaOptima
+## Ayoze 
+##     1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Hurwicz}
+
+\NormalTok{hurwiczSCG }\OtherTok{=} \FunctionTok{criterio.Hurwicz}\NormalTok{(datosSCG, }\FloatTok{0.5}\NormalTok{, T)}
+\NormalTok{hurwiczSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Hurwicz"
+## 
+## $alfa
+## [1] 0.5
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##         68.0         71.5         71.0 
+## 
+## $ValorOptimo
+## [1] 71.5
+## 
+## $AlternativaOptima
+## Isi Palazón 
+##           2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Savage}
+
+\NormalTok{savageSCG }\OtherTok{=} \FunctionTok{criterio.Savage}\NormalTok{(datosSCG,T)}
+\NormalTok{savageSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Savage"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $Mejores
+##      pase velocidad       gol 
+##        80        78        81 
+## 
+## $Pesos
+##              pase velocidad gol
+## Ayoze          25         0   0
+## Isi Palazón    14         1   7
+## Samu Orodion    0        16   8
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##           25           14           16 
+## 
+## $ValorOptimo
+## [1] 14
+## 
+## $AlternativaOptima
+## Isi Palazón 
+##           2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Laplace}
+
+\NormalTok{laplaceSCG }\OtherTok{=} \FunctionTok{criterio.Laplace}\NormalTok{(datosSCG,T)}
+\NormalTok{laplaceSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Laplace"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##     71.33333     72.33333     71.66667 
+## 
+## $ValorOptimo
+## [1] 72.33333
+## 
+## $AlternativaOptima
+## Isi Palazón 
+##           2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Criterio Punto Ideal}
+
+\NormalTok{pidealSCG }\OtherTok{=} \FunctionTok{criterio.PuntoIdeal}\NormalTok{(datosSCG,T)}
+\NormalTok{pidealSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Punto Ideal"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##              pase velocidad gol
+## Ayoze          55        78  81
+## Isi Palazón    66        77  74
+## Samu Orodion   80        62  73
+## 
+## $Mejores
+##      pase velocidad       gol 
+##        80        78        81 
+## 
+## $ValorAlternativas
+##        Ayoze  Isi Palazón Samu Orodion 
+##     25.00000     15.68439     17.88854 
+## 
+## $ValorOptimo
+## [1] 15.68439
+## 
+## $AlternativaOptima
+## Isi Palazón 
+##           2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Todos los criterios}
+
+\NormalTok{todosSCG }\OtherTok{=} \FunctionTok{criterio.Todos}\NormalTok{(datosSCG, }\AttributeTok{alfa=}\FloatTok{0.5}\NormalTok{, }\AttributeTok{favorable =}\NormalTok{ T)}
+\NormalTok{todosSCG}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 pase velocidad gol        Wald Optimista     Hurwicz
+## Ayoze             55        78  81          55        81        68.0
+## Isi Palazón       66        77  74          66        77        71.5
+## Samu Orodion      80        62  73          62        80        71.0
+## iAlt.Opt (fav.)   --        --  -- Isi Palazón     Ayoze Isi Palazón
+##                      Savage     Laplace Punto Ideal
+## Ayoze                    25       71.33       25.00
+## Isi Palazón              14       72.33       15.68
+## Samu Orodion             16       71.67       17.89
+## iAlt.Opt (fav.) Isi Palazón Isi Palazón Isi Palazón
+\end{verbatim}
+
+\textbf{\emph{CONCLUSIÓN:}}
+
+\textbf{Todos los criterios empleados recomiendan convocar a Isi
+Palazón}, a excepción del criterio Optimista, que recomienda a Ayoze ,
+ya que el criterio optimista siempre actúa en la mejor situación
+posible, en la que Ayoze, en este caso, haría una gran actuación a nivel
+de goles, la cuál sería determinante.
+
+\textbf{Finalmente, se selecciona a Isi Palazón.}
+
+\newpage
+
+\section{Belén Puerta González}\label{beluxe9n-puerta-gonzuxe1lez}
+
+\subsection{Problema 1}\label{problema-1-2}
+
+Aplicar los criterios de decisión bajo incertidumbre a la siguiente
+matriz de valores:
+
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+& e1 & e2 & e3 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 5 & 3 & -1 \\
+d2 & 12 & 6 & 6 \\
+d3 & 10 & 4 & 8 \\
+d4 & 13 & 4 & 1 \\
+d5 & 5 & 8 & 10 \\
+\end{longtable}
+
+Resolver primero para el caso FAVORABLE (beneficios) y, posteriormente,
+para el caso DESFAVORABLE (costos).
+
+\subsubsection{CASO FAVORABLE}\label{caso-favorable}
+
+\textbf{1. Criterio de Wald}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_pes\_FAV }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_pes\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d2.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{2. Criterio optimista}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_opt\_FAV }\OtherTok{=} \FunctionTok{criterio.Optimista}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_opt\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d4"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d4.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{3. Criterio de Hurwitcz}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_hur\_FAV }\OtherTok{=} \FunctionTok{criterio.Hurwicz}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_hur\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d4"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d4.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(datos, T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\textbf{4. Criterio de Savage}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_sav\_FAV }\OtherTok{=} \FunctionTok{criterio.Savage}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_sav\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d2" "d3"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión son las alternativas d2 y d3.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{5. Criterio de Laplace}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_lap\_FAV }\OtherTok{=} \FunctionTok{criterio.Laplace}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_lap\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d2.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{6. Criterio del punto ideal}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_pid\_FAV }\OtherTok{=} \FunctionTok{criterio.PuntoIdeal}\NormalTok{(datos,T)}
+\FunctionTok{names}\NormalTok{(p1\_pid\_FAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d2.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{\emph{CONCLUSIÓN FINAL:}} En el escenario favorable, es decir,
+considerando que los datos son beneficios, podemos observar que
+mayoritariamente la alternativa d2 es la más elegida.
+
+\subsubsection{CASO DESFAVORABLE}\label{caso-desfavorable}
+
+\textbf{1. Criterio de Wald}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_pes\_DESFAV }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_pes\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d1.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{2. Criterio optimista}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_opt\_DESFAV }\OtherTok{=} \FunctionTok{criterio.Optimista}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_opt\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d1.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{3. Criterio de Hurwitcz}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_hur\_DESFAV }\OtherTok{=} \FunctionTok{criterio.Hurwicz}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_hur\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d2"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d2.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(datos,F)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-36-1.pdf}
+
+\textbf{4. Criterio de Savage}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_sav\_DESFAV }\OtherTok{=} \FunctionTok{criterio.Savage}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_sav\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d1.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{5. Criterio de Laplace}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_lap\_DESFAV }\OtherTok{=} \FunctionTok{criterio.Laplace}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_lap\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d1.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{6. Criterio del punto ideal}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p1\_pid\_DESFAV }\OtherTok{=} \FunctionTok{criterio.PuntoIdeal}\NormalTok{(datos,F)}
+\FunctionTok{names}\NormalTok{(p1\_pid\_DESFAV}\SpecialCharTok{$}\NormalTok{AlternativaOptima) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "d1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# La mejor decisión es la alternativa d1.}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{\emph{CONCLUSIÓN FINAL:}} En el escenario desfavorable, es
+decir, considerando que los datos son costes, podemos observar que
+mayoritariamente la alternativa d1 es la más elegida.
+
+\subsection{Problema 2}\label{problema-2-2}
+
+Un inversionista ha decidido analizar diversas opciones de inversión, ya
+que busca maximizar sus ganancias bajo distintos escenarios del mercado.
+Tras meses de estudio y consultas con expertos financieros, ha reducido
+sus opciones a cuatro activos financieros que, según su análisis,
+presentan distintas oportunidades de rendimiento.
+
+Ha identificado tres posibles escenarios del mercado: mercado alcista,
+en el que se espera un crecimiento considerable de la economía; mercado
+estable, donde los rendimientos se mantendrán sin grandes cambios; y
+mercado bajista, en el que la economía enfrentará dificultades.
+
+Con base en las proyecciones actuales, los rendimientos estimados para
+cada activo bajo estos escenarios, expresados en millones de euros, son
+los siguientes:
+
+\begin{itemize}
+\item
+  \textbf{Acciones tecnológicas}: en un escenario alcista generarían 15
+  millones, en un mercado estable producirían 7 millones, y en un
+  mercado bajista solo darían 1 millón. Este tipo de activo se ha
+  caracterizadompor su enorme potencial en épocas de bonanza.
+\item
+  \textbf{Bonos del gobierno}: se proyecta que generen un rendimiento
+  constante de 5 millones sin importar el estado del mercado. Se
+  consideran una opción de bajo riesgo, especialmente en tiempos de
+  incertidumbre, debido a su estabilidad.
+\item
+  \textbf{Fondos de bienes raíces}: bajo un mercado alcista podrían
+  proporcionar un rendimiento de 10 millones, en un mercado estable 6
+  millones, y en un escenario bajista 2 millones.
+\item
+  \textbf{Criptomonedas}: en un mercado alcista su rentabilidad podría
+  alcanzar los 25 millones, en un mercado estable solo generarían 3
+  millones, y en un mercado bajista apenas 1 millón. Este activo es
+  conocido por su alta volatilidad.
+\end{itemize}
+
+Dado este panorama y los rendimientos proyectados, ¿cuál sería la opción
+más adecuada que recomendarías al inversionista?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos2 }\OtherTok{=} \FunctionTok{crea.tablaX}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{15}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{1}\NormalTok{,}
+                       \DecValTok{5}\NormalTok{,  }\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{,}
+                       \DecValTok{10}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{2}\NormalTok{,}
+                       \DecValTok{25}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{), }\AttributeTok{numalternativas =} \DecValTok{4}\NormalTok{, }\AttributeTok{numestados =} \DecValTok{3}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(datos2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrrr@{}}
+\toprule\noalign{}
+& e1 & e2 & e3 \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 15 & 7 & 1 \\
+d2 & 5 & 5 & 5 \\
+d3 & 10 & 6 & 2 \\
+d4 & 25 & 3 & 1 \\
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Alternativa }\OtherTok{=} \FunctionTok{criterio.Todos}\NormalTok{(datos2, }\AttributeTok{favorable =}\NormalTok{ T) }
+\CommentTok{\# El inversionista tiene margen de elección para buscar maximizar }
+\CommentTok{\# ganancias, lo que indica un problema en una situación favorable.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(Alternativa[,}\DecValTok{4}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(Alternativa)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.2424}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0758}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1515}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1212}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1061}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1212}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1818}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wald
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Optimista
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hurwicz
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Savage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Laplace
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Punto Ideal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 1 & 15 & 5.2 & 10 & 7.667 & 10.770 \\
+d2 & 5 & 5 & 5.0 & 20 & 5.000 & 20.100 \\
+d3 & 2 & 10 & 4.4 & 15 & 6.000 & 15.330 \\
+d4 & 1 & 25 & 8.2 & 4 & 9.667 & 5.657 \\
+iAlt.Opt (fav.) & d2 & d4 & d4 & d4 & d4 & d4 \\
+\end{longtable}
+
+\textbf{\emph{CONCLUSIÓN}}: Podemos observar que, mayoritariamente la
+mejor alternativa serían las criptomonedas. Tan solo en el criterio de
+Wald, se obtiene que la mejor alternativa serían los bonos del gobierno.
+
+\newpage
+
+\section{María del Rosario Ruiz
+Avila}\label{maruxeda-del-rosario-ruiz-avila}
+
+\subsection{Problema 1}\label{problema-1-3}
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos viene dada en la tabla siguiente:
+Creamos la matriz de decisión:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tabla\_decision }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{8}\NormalTok{,   }\CommentTok{\# Publicidad TV}
+                           \DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{,   }\CommentTok{\# Publicidad Online}
+                           \DecValTok{2}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{7}\NormalTok{,   }\CommentTok{\# Eventos Presenciales}
+                           \DecValTok{5}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{),  }\CommentTok{\# Influencers}
+                         \AttributeTok{nrow =} \DecValTok{4}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{rownames}\NormalTok{(tabla\_decision) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Publicidad TV"}\NormalTok{, }\StringTok{"Publicidad Online"}\NormalTok{, }\StringTok{"Eventos Presenciales"}\NormalTok{, }\StringTok{"Influencers"}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(tabla\_decision) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Mercado Local"}\NormalTok{, }\StringTok{"Mercado Internacional"}\NormalTok{, }\StringTok{"Nuevas Tecnologías"}\NormalTok{)}
+\NormalTok{tabla\_decision}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+\end{verbatim}
+
+Donde las estrategias son los tipos de publicidad y los estados de la
+naturaleza los mercados considerar: a)Beneficios (favorable)
+
+Criterio de wald: Selecciona la estrategia que tenga el mayor de los
+valores mínimos, siendo conservador.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_wald }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(tabla\_decision,T)}
+\NormalTok{s01\_wald}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Wald"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## 
+## $ValorAlternativas
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##                    5                    3                    2 
+##          Influencers 
+##                    4 
+## 
+## $ValorOptimo
+## [1] 5
+## 
+## $AlternativaOptima
+## Publicidad TV 
+##             1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(s01\_wald}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad TV"
+\end{verbatim}
+
+Criterio Optimista: Este criterio selecciona la estrategia con el mejor
+resultado posible, siendo muy optimista.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_optima}\OtherTok{=}\FunctionTok{criterio.Optimista}\NormalTok{(tabla\_decision,T)}
+\NormalTok{s01\_optima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Optimista"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## 
+## $ValorAlternativas
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##                    8                    6                    9 
+##          Influencers 
+##                    6 
+## 
+## $ValorOptimo
+## [1] 9
+## 
+## $AlternativaOptima
+## Eventos Presenciales 
+##                    3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(s01\_optima}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Eventos Presenciales"
+\end{verbatim}
+
+Criterio Hurwicz:ombina el optimismo y el pesimismo mediante un
+coeficiente alfa (en este caso, 0.4, lo que significa que se considera
+más pesimismo).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_hurwitz}\OtherTok{=}\FunctionTok{criterio.Hurwicz}\NormalTok{(tabla\_decision,}\AttributeTok{alfa=}\FloatTok{0.4}\NormalTok{,T)}
+\NormalTok{s01\_hurwitz}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Hurwicz"
+## 
+## $alfa
+## [1] 0.4
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## 
+## $ValorAlternativas
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##                  6.2                  4.2                  4.8 
+##          Influencers 
+##                  4.8 
+## 
+## $ValorOptimo
+## [1] 6.2
+## 
+## $AlternativaOptima
+## Publicidad TV 
+##             1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(s01\_hurwitz}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad TV"
+\end{verbatim}
+
+Criterio Savage: Minimiza el arrepentimiento, es decir, la diferencia
+entre lo que se obtuvo y lo que podría haberse obtenido en el mejor
+escenario.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_savage}\OtherTok{=}\FunctionTok{criterio.Savage}\NormalTok{(tabla\_decision,T)}
+\NormalTok{s01\_savage}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $criterio
+## [1] "Savage"
+## 
+## $metodo
+## [1] "favorable"
+## 
+## $tablaX
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## 
+## $Mejores
+##         Mercado Local Mercado Internacional    Nuevas Tecnologías 
+##                     7                     9                     8 
+## 
+## $Pesos
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    0                     4                  0
+## Publicidad Online                3                     3                  5
+## Eventos Presenciales             5                     0                  1
+## Influencers                      2                     5                  2
+## 
+## $ValorAlternativas
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##                    4                    5                    5 
+##          Influencers 
+##                    5 
+## 
+## $ValorOptimo
+## [1] 4
+## 
+## $AlternativaOptima
+## Publicidad TV 
+##             1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(s01\_savage}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad TV"
+\end{verbatim}
+
+Criterio Laplace:Considera que todos los estados de la naturaleza son
+igualmente probables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_laplace}\OtherTok{=}\FunctionTok{criterio.Laplace}\NormalTok{(tabla\_decision,T)}
+\FunctionTok{names}\NormalTok{(s01\_laplace}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad TV"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_laplace}\SpecialCharTok{$}\NormalTok{ValorAlternativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##             6.666667             4.333333             6.000000 
+##          Influencers 
+##             5.000000
+\end{verbatim}
+
+Criterio Punto Ideal: Compara las alternativas con un ``punto ideal'' en
+el que se maximiza todo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_pid}\OtherTok{=}\FunctionTok{criterio.PuntoIdeal}\NormalTok{(tabla\_decision,T)}
+\NormalTok{s01\_pid}\SpecialCharTok{$}\NormalTok{AlternativaOptima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Publicidad TV 
+##             1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_pid}\SpecialCharTok{$}\NormalTok{ValorAlternativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##             4.000000             6.557439             5.099020 
+##          Influencers 
+##             5.744563
+\end{verbatim}
+
+Todos los criterios:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_todos}\OtherTok{=}\FunctionTok{criterio.Todos}\NormalTok{(tabla\_decision,}\AttributeTok{alfa=}\FloatTok{0.5}\NormalTok{,T)}
+\NormalTok{s01\_todos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## iAlt.Opt (fav.)                 --                    --                 --
+##                               Wald            Optimista       Hurwicz
+## Publicidad TV                    5                    8           6.5
+## Publicidad Online                3                    6           4.5
+## Eventos Presenciales             2                    9           5.5
+## Influencers                      4                    6           5.0
+## iAlt.Opt (fav.)      Publicidad TV Eventos Presenciales Publicidad TV
+##                             Savage       Laplace   Punto Ideal
+## Publicidad TV                    4         6.667         4.000
+## Publicidad Online                5         4.333         6.557
+## Eventos Presenciales             5         6.000         5.099
+## Influencers                      5         5.000         5.745
+## iAlt.Opt (fav.)      Publicidad TV Publicidad TV Publicidad TV
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(tabla\_decision,T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-49-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz\_Intervalos}\NormalTok{(tabla\_decision,T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-49-2.pdf}
+
+\begin{verbatim}
+## $AltOptimas
+## [1] 1 3
+## 
+## $PuntosDeCorte
+## [1] 0.75
+## 
+## $IntervalosAlfa
+##      Intervalo      Alternativa
+## [1,] "( 0 , 0.75 )" "1"        
+## [2,] "( 0.75 , 1 )" "3"
+\end{verbatim}
+
+En todos los casos la mejor estrategia es la Publicidad en TV, excepto
+en el criterio optimista que la estrategia son los Eventos Presenciales.
+
+b)Costos (desfavorable) Criterio de wald
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_wald }\OtherTok{=} \FunctionTok{criterio.Wald}\NormalTok{(tabla\_decision,F)}
+\FunctionTok{names}\NormalTok{(s01\_wald}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad Online" "Influencers"
+\end{verbatim}
+
+Criterio Optimista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_optima}\OtherTok{=}\FunctionTok{criterio.Optimista}\NormalTok{(tabla\_decision,F)}
+\FunctionTok{names}\NormalTok{(s01\_optima}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Eventos Presenciales"
+\end{verbatim}
+
+Criterio Hurwicz
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_hurwicz}\OtherTok{=}\FunctionTok{criterio.Hurwicz}\NormalTok{(tabla\_decision,}\AttributeTok{alfa=}\FloatTok{0.4}\NormalTok{,F)}
+\FunctionTok{names}\NormalTok{(s01\_hurwitz}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad TV"
+\end{verbatim}
+
+Criterio Savage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_savage}\OtherTok{=}\FunctionTok{criterio.Savage}\NormalTok{(tabla\_decision,F)}
+\FunctionTok{names}\NormalTok{(s01\_savage}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad Online"
+\end{verbatim}
+
+Criterio Laplace
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_laplace}\OtherTok{=}\FunctionTok{criterio.Laplace}\NormalTok{(tabla\_decision,F)}
+\FunctionTok{names}\NormalTok{(s01\_laplace}\SpecialCharTok{$}\NormalTok{AlternativaOptima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Publicidad Online"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_laplace}\SpecialCharTok{$}\NormalTok{ValorAlternativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##             6.666667             4.333333             6.000000 
+##          Influencers 
+##             5.000000
+\end{verbatim}
+
+Criterio Punto Ideal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_pid}\OtherTok{=}\FunctionTok{criterio.PuntoIdeal}\NormalTok{(tabla\_decision,F)}
+\NormalTok{s01\_pid}\SpecialCharTok{$}\NormalTok{AlternativaOptima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Publicidad Online 
+##                 2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_pid}\SpecialCharTok{$}\NormalTok{ValorAlternativas}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        Publicidad TV    Publicidad Online Eventos Presenciales 
+##             7.141428             2.828427             6.403124 
+##          Influencers 
+##             4.242641
+\end{verbatim}
+
+Todos los criterios:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{s01\_todos}\OtherTok{=}\FunctionTok{criterio.Todos}\NormalTok{(tabla\_decision,}\AttributeTok{alfa=}\FloatTok{0.5}\NormalTok{,F)}
+\NormalTok{s01\_todos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      Mercado Local Mercado Internacional Nuevas Tecnologías
+## Publicidad TV                    7                     5                  8
+## Publicidad Online                4                     6                  3
+## Eventos Presenciales             2                     9                  7
+## Influencers                      5                     4                  6
+## iAlt.Opt (Desfav.)              --                    --                 --
+##                                               Wald            Optimista
+## Publicidad TV                                    8                    5
+## Publicidad Online                                6                    3
+## Eventos Presenciales                             9                    2
+## Influencers                                      6                    4
+## iAlt.Opt (Desfav.)   Publicidad Online,Influencers Eventos Presenciales
+##                                Hurwicz            Savage           Laplace
+## Publicidad TV                      6.5                 5             6.667
+## Publicidad Online                  4.5                 2             4.333
+## Eventos Presenciales               5.5                 5             6.000
+## Influencers                        5.0                 3             5.000
+## iAlt.Opt (Desfav.)   Publicidad Online Publicidad Online Publicidad Online
+##                            Punto Ideal
+## Publicidad TV                    7.141
+## Publicidad Online                2.828
+## Eventos Presenciales             6.403
+## Influencers                      4.243
+## iAlt.Opt (Desfav.)   Publicidad Online
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz}\NormalTok{(tabla\_decision,F)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dibuja.criterio.Hurwicz\_Intervalos}\NormalTok{(tabla\_decision,F)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Resolucion_files/figure-latex/unnamed-chunk-56-2.pdf}
+
+\begin{verbatim}
+## $AltOptimas
+## [1] 2 3
+## 
+## $PuntosDeCorte
+## [1] 0.75
+## 
+## $IntervalosAlfa
+##      Intervalo      Alternativa
+## [1,] "( 0 , 0.75 )" "2"        
+## [2,] "( 0.75 , 1 )" "3"
+\end{verbatim}
+
+En 5 de los criterios la mejor opción es la Publicidad Online para
+minimizar los costos. El criterio de Wald tiene dos soluciones, la
+anterior y la estrategia de Influencers. Por otro lado, el criterio
+optimista repite con Eventos Presenciales.
+
+\subsection{Problema 2}\label{problema-2-3}
+
+Dos amigos, Claudia y Mario, están planeando abrir una pequeña
+cafetería. Han ahorrado 1500 euros cada uno y quieren decidir qué
+enfoque darle al negocio. Existen tres opciones según el tipo de menú
+que ofrezcan: Un menú básico, un menú saludable o un menú gourmet.
+Dependiendo de la situación económica y las tendencias alimentarias, la
+demanda puede aumentar o disminuir, lo que afectará sus ingresos.
+
+Si eligen un menú básico, tendrán un flujo constante de clientes, pero
+los márgenes de ganancia serán bajos, con una ganancia o pérdida del
+5\%.
+
+Si eligen un menú saludable, pueden atraer a un nicho de clientes en
+crecimiento, pero la inversión en ingredientes será mayor, y podrían
+obtener una ganancia del 12\% si la tendencia continúa, o perder un 8\%
+si la tendencia no se mantiene.
+
+Si optan por un menú gourmet, el riesgo es mayor porque depende de la
+clientela de alto poder adquisitivo, lo que les permitirá obtener una
+ganancia del 20\% si la economía es favorable, pero podrían perder un
+15\% si la economía se desacelera. Claudia es más conservadora y
+prefiere minimizar los riesgos, mientras que Mario está dispuesto a
+asumir más riesgos confiando en que la economía mejorará.
+
+¿Qué tipo de menú elegiría cada uno de ellos según sus actitudes hacia
+el riesgo? Estado e1 (Demanda favorable)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n11 }\OtherTok{=} \DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.05}     \CommentTok{\# Menú básico}
+\NormalTok{n21 }\OtherTok{=} \DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.12}     \CommentTok{\# Menú saludable}
+\NormalTok{n31 }\OtherTok{=} \DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.20}     \CommentTok{\# Menú gourmet}
+\end{Highlighting}
+\end{Shaded}
+
+Estado e2 (Demanda desfavorable)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n12 }\OtherTok{=} \SpecialCharTok{{-}}\DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.05}    \CommentTok{\# Menú básico}
+\NormalTok{n22 }\OtherTok{=} \SpecialCharTok{{-}}\DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.08}    \CommentTok{\# Menú saludable}
+\NormalTok{n32 }\OtherTok{=} \SpecialCharTok{{-}}\DecValTok{1500} \SpecialCharTok{*} \FloatTok{0.15}    \CommentTok{\# Menú gourmet}
+\end{Highlighting}
+\end{Shaded}
+
+Crear la tabla de decisión
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tb\_decision }\OtherTok{=} \FunctionTok{crea.tablaX}\NormalTok{(}\FunctionTok{c}\NormalTok{(n11, n12,}
+\NormalTok{                            n21, n22,}
+\NormalTok{                            n31, n32), }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Aplicar los criterios de decisión
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res\_decision }\OtherTok{=} \FunctionTok{criterio.Todos}\NormalTok{(tb\_decision, }\AttributeTok{alfa =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{favorable =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Mostrar los resultados en formato tabla
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(res\_decision)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.2133}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0533}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1067}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0933}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1067}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1600}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+e1
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+e2
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Wald
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Optimista
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Hurwicz
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Savage
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Laplace
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Punto Ideal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+d1 & 75 & -75 & -75 & 75 & 0.0 & 225 & 0.0 & 225.0 \\
+d2 & 180 & -120 & -120 & 180 & 30.0 & 120 & 30.0 & 128.2 \\
+d3 & 300 & -225 & -225 & 300 & 37.5 & 150 & 37.5 & 150.0 \\
+iAlt.Opt (fav.) & -- & -- & d1 & d3 & d3 & d2 & d3 & d2 \\
+\end{longtable}
+
+Claudia es conservadora y busca minimizar las posibles pérdidas.
+Aplicando el criterio de Wald o Minimax, probablemente seleccione la
+opción del menú básico, que ofrece la menor pérdida en el peor escenario
+(-75 euros). Mario es más arriesgado y busca maximizar sus posibles
+ganancias. Aplicando el criterio optimista (Maximax), seleccionará el
+menú gourmet, que le podría dar la mayor ganancia en el mejor escenario
+(300 euros). Claudia optará por un menú básico y Mario por un menú
+gourmet.
+
+\end{document}

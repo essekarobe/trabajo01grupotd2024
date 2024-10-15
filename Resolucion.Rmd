@@ -9,9 +9,12 @@ lang: es
 number-sections: true
 encoding: UTF-8
 toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
-\newpage
 
+\newpage
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -20,8 +23,10 @@ source("teoriadecision_funciones_incertidumbre.R")
 
 # Laura Mayorgasdel Castillo
 
-## Problema 1 
-Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos vienen dadas en la tabla siguiente: 
+## Problema 1
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos vienen dadas en la tabla siguiente:
 
 ```{r, echo=FALSE}
 tabla=cbind(tabla <- data.frame(
@@ -34,11 +39,11 @@ row.names(tabla)=c("d1","d2","d3","d4","d5")
 knitr::kable(tabla)
 ```
 
+a)  Desde el punto de vista FAVORABLE
+b)  Desde el punto de vista DESFAVORABLE
 
-a) Desde el punto de vista FAVORABLE
-b) Desde el punto de vista DESFAVORABLE
+### Desde el punto de vista FAVORABLE o BENEFICIOS
 
-###  Desde el punto de vista FAVORABLE o BENEFICIOS
 ```{r}
 tb01= crea.tablaX(c(4,5,-3,7,8,
                     3,-1,3,7,9,
@@ -46,21 +51,22 @@ tb01= crea.tablaX(c(4,5,-3,7,8,
                     4,6,7,-9,3),numalternativas = 4,numestados = 5)
 ```
 
-1. Criterio de Wald
+1.  Criterio de Wald
 
 ```{r}
 sol1Wlad=criterio.Wald(tb01,favorable = TRUE)
 cat("La solución por el criterio de Wald es la:", sol1Wlad$AlternativaOptima)
 ```
 
-2. Criterio optimista
+2.  Criterio optimista
 
 ```{r}
 sol1Opt=criterio.Optimista(tb01,favorable = TRUE)
 cat("La solución por el criterio Optimista es la:", sol1Opt$AlternativaOptima)
 ```
 
-3. Criterio de Hurwitcz
+3.  Criterio de Hurwitcz
+
 ```{r}
 sol1Hur=criterio.Hurwicz(tb01,favorable = TRUE)
 cat("La solución por el criterio de Hurwitcz es la:", sol1Hur$AlternativaOptima)
@@ -70,23 +76,21 @@ cat("La solución por el criterio de Hurwitcz es la:", sol1Hur$AlternativaOptima
 dibuja.criterio.Hurwicz(tb01,favorable = TRUE)
 ```
 
+4.  Criterio de Savage
 
-4. Criterio de Savage
 ```{r}
 sol1Sav=criterio.Savage(tb01,favorable = TRUE)
 cat("La solución por el criterio de Savage es la:", sol1Sav$AlternativaOptima)
 ```
 
-
-5. Criterio de Lapalce
+5.  Criterio de Lapalce
 
 ```{r}
 sol1Lap=criterio.Laplace(tb01,favorable = TRUE)
 cat("La solución por el criterio Laplace es la:", sol1Lap$AlternativaOptima)
 ```
 
-
-7. Criterio del punto ideal
+7.  Criterio del punto ideal
 
 ```{r}
 sol1PuntId=criterio.PuntoIdeal(tb01,favorable = TRUE)
@@ -94,33 +98,35 @@ cat("La solución por el criterio del Punto Ideal es la:", sol1PuntId$Alternativ
 
 ```
 
-8. Criterios todos
+8.  Criterios todos
 
 ```{r}
 sol1Todos=criterio.Todos(tb01,favorable = T, alfa = 0.5)
 knitr::kable(sol1Todos[,6:ncol(sol1Todos)])
 ```
 
+### Desde el punto de vista DESFAVORABLE o de COSTES
 
-###  Desde el punto de vista DESFAVORABLE o de COSTES
-
-1. Criterio de Wald
+1.  Criterio de Wald
 
 ```{r}
 sol2Wlad=criterio.Wald(tb01,favorable = FALSE)
 cat("La solución por el criterio de Wald es la:", sol2Wlad$AlternativaOptima)
 ```
 
-2. Criterio optimista
+2.  Criterio optimista
 
 ```{r}
 sol2Opt=criterio.Optimista(tb01,favorable = FALSE)
 cat("La solución por el criterio Optimista es la:", sol2Opt$AlternativaOptima)
 ```
 
-
+```{=tex}
 \newpage
-3. Criterio de Hurwitcz
+3
+```
+. Criterio de Hurwitcz
+
 ```{r}
 sol2Hur1=criterio.Hurwicz(tb01,favorable = FALSE,alfa = 0.4)
 cat("La solución por el criterio de Hurwitcz es la:", sol2Hur1$AlternativaOptima)
@@ -131,23 +137,21 @@ sol2Hur2= criterio.Hurwicz.General(tb01,favorable = FALSE, alfa = 0.4)
 dibuja.criterio.Hurwicz(tb01,favorable = FALSE)
 ```
 
+4.  Criterio de Savage
 
-4. Criterio de Savage
 ```{r}
 sol2Sav=criterio.Savage(tb01,favorable = FALSE)
 cat("La solución por el criterio de Savage es la:", sol2Sav$AlternativaOptima)
 ```
 
-
-5. Criterio de Lapalce
+5.  Criterio de Lapalce
 
 ```{r}
 sol2Lap=criterio.Laplace(tb01,favorable = FALSE)
 cat("La solución por el criterio Laplace es la:", sol2Lap$AlternativaOptima)
 ```
 
-
-6. Criterio del punto ideal
+6.  Criterio del punto ideal
 
 ```{r}
 sol2PuntId=criterio.PuntoIdeal(tb01,favorable = FALSE)
@@ -155,7 +159,7 @@ cat("La solución por el criterio del Punto Ideal es la:", sol2PuntId$Alternativ
 
 ```
 
-7. Criterios todos
+7.  Criterios todos
 
 ```{r}
 sol2Todos=criterio.Todos(tb01,favorable = FALSE, alfa = 0.5)
@@ -166,42 +170,65 @@ knitr::kable(sol2Todos[,6:ncol(sol2Todos)])
 
 ## Problema 2
 
-El equipo ARUS de Formula Student de la Universidad de Sevilla está evaluando a qué competición asistir este año. Actualmente, tienen tres opciones disponibles, y cada una tiene características distintas en términos de coste, nivel de competencia y beneficios potenciales:
-Para acceder a cada una se debe pagar una cuota de inscripción 
+El equipo ARUS de Formula Student de la Universidad de Sevilla está
+evaluando a qué competición asistir este año. Actualmente, tienen tres
+opciones disponibles, y cada una tiene características distintas en
+términos de coste, nivel de competencia y beneficios potenciales: Para
+acceder a cada una se debe pagar una cuota de inscripción
 
-**Competición en Barcelona:** La cuota de inscripción es de 2,000 euros y el coste de transporte es bajo ya que no saldrían de España, aproximadamente de unos 1,000 euros. El equipo espera obtener buenos resultados aquí ya que se encuentran en casa, en caso de ganar, podrían conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia es medio bajo teniendo muchas posibilidades de quedar entre los primeros.
+**Competición en Barcelona:** La cuota de inscripción es de 2,000 euros
+y el coste de transporte es bajo ya que no saldrían de España,
+aproximadamente de unos 1,000 euros. El equipo espera obtener buenos
+resultados aquí ya que se encuentran en casa, en caso de ganar, podrían
+conseguir un premio de 5,000 euros. Sin embargo, el nivel de competencia
+es medio bajo teniendo muchas posibilidades de quedar entre los
+primeros.
 
-**Competición en Hockenheim (Alemania):** Es una de la competición más prestigiosa, esto se ve reflejado en su cuota de inscripción que es de 3,500 euros. Además el coste de transporte debido a las escasas conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los primeros puestos, podrían conseguir un premio de 10,000 euros.Una increible recompensa que sumada al orgullo de ganarla es un gran aliciente. 
+**Competición en Hockenheim (Alemania):** Es una de la competición más
+prestigiosa, esto se ve reflejado en su cuota de inscripción que es de
+3,500 euros. Además el coste de transporte debido a las escasas
+conexiones es elevado llegando a 4,000 euros. Si logran quedar entre los
+primeros puestos, podrían conseguir un premio de 10,000 euros.Una
+increible recompensa que sumada al orgullo de ganarla es un gran
+aliciente.
 
-**Competición en Assen (Paises Bajos):** El coste de inscripción es intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es una competición con buen reconocimiento pero que no lleva tantos años celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y el nivel de competencia también es alto.
+**Competición en Assen (Paises Bajos):** El coste de inscripción es
+intermedio, 2,800 euros, y el coste de transporte es de 3,500 euros. Es
+una competición con buen reconocimiento pero que no lleva tantos años
+celebrandose. El premio es una buena cifra tratándose de 7,000 euros, y
+el nivel de competencia también es alto.
 
 ¿A qué competición le recomendarías a la directiva del equipo asistir?
 
-Costes y premios:
-  o	Competición en España:
-  
-    -	Coste total: 2,000 € (inscripción) + 1,000 € (transporte) = 3,000 €
-    -	Premio si gana: 5,000 €
-    -	Beneficio neto si gana: 5,000 - 3,000 = 2,000 €
-    -	Beneficio neto si no gana: -3,000 € (pérdida de costes)
-    
-  o Competición en Alemania:
+Costes y premios: o Competición en España:
 
-    - Coste total: 3,500 € (inscripción) + 4,000 € (transporte) = 7,500 €
-    - Premio si gana: 10,000 €
-    - Beneficio neto si gana: 10,000 - 7,500 = 2,500 €
-    - Beneficio neto si no gana: -7,500 € (pérdida de costes)
-    
-    
-  o Competición en Países Bajos:
-  
-    - Coste total: 2,800 € (inscripción) + 3,500 € (transporte) = 6,300 €
-    - Premio si gana: 7,000 €
-    - Beneficio neto si gana: 7,000 - 6,300 = 700 €
-    - Beneficio neto si no gana: -6,300 € (pérdida de costes)
+```         
+-   Coste total: 2,000 € (inscripción) + 1,000 € (transporte) = 3,000 €
+-   Premio si gana: 5,000 €
+-   Beneficio neto si gana: 5,000 - 3,000 = 2,000 €
+-   Beneficio neto si no gana: -3,000 € (pérdida de costes)
+```
 
+o Competición en Alemania:
+
+```         
+- Coste total: 3,500 € (inscripción) + 4,000 € (transporte) = 7,500 €
+- Premio si gana: 10,000 €
+- Beneficio neto si gana: 10,000 - 7,500 = 2,500 €
+- Beneficio neto si no gana: -7,500 € (pérdida de costes)
+```
+
+o Competición en Países Bajos:
+
+```         
+- Coste total: 2,800 € (inscripción) + 3,500 € (transporte) = 6,300 €
+- Premio si gana: 7,000 €
+- Beneficio neto si gana: 7,000 - 6,300 = 700 €
+- Beneficio neto si no gana: -6,300 € (pérdida de costes)
+```
 
 \newpage
+
 ```{r}
 tb02= crea.tablaX(c(2000,-3000,
                     2500,-7500,
@@ -210,21 +237,205 @@ rownames(tb02)=c("España","Alemania","Paises Bajos")
 colnames(tb02)=c("Ganar","Perder")
 knitr::kable(tb02)
 ```
+
 ```{r}
 solp2=criterio.Todos(tb02,alfa = 0.3,favorable = FALSE)
 knitr::kable(solp2[,3:ncol(solp2)])
 
 ```
 
-
-
 \newpage
 
 # Roberto González Lozano
 
-## Problema 1
+```{r include=FALSE}
+source("teoriadecision_funciones_incertidumbre.R")
+library(kableExtra)
+```
 
-## Problema 2
+## Problema 1:
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos vienen dadas en la tabla siguiente bajo
+dos puntos de vistas:
+
+```{r echo=TRUE}
+tablaSCG=crea.tablaX(c(2,5,7,2,-2,9,5,3,4,5,3,1), numalternativas = 3,numestados = 4)
+tablaSCG
+```
+
+1)  **Caso Favorable (beneficios)**
+2)  **Caso Desfavorable (costes)**
+
+### Caso Favorable (beneficios)
+
+```{r CASO FAVORABLE}
+#Criterio de Wald
+
+waldSCG = criterio.Wald(tablaSCG,T)
+waldSCG
+
+# Criterio Optimista
+
+optimistaSCG = criterio.Optimista(tablaSCG,T)
+optimistaSCG
+
+# Criterio Hurwicz
+
+hurwiczSCG = criterio.Hurwicz(tablaSCG, 0.5, T)
+hurwiczSCG
+
+
+# Criterio Savage
+
+savageSCG = criterio.Savage(tablaSCG,T)
+savageSCG
+
+# Criterio Laplace
+
+laplaceSCG = criterio.Laplace(tablaSCG,T)
+laplaceSCG
+
+# Criterio Punto Ideal
+
+pidealSCG = criterio.PuntoIdeal(tablaSCG,T)
+pidealSCG
+
+#Todos los criterios
+
+todosSCG = criterio.Todos(tablaSCG, alfa=0.5, favorable = T)
+todosSCG
+
+```
+
+**Por tanto, en caso favorable, selecciono la alternativa d1.**
+
+### Caso Desfavorable (costes)
+
+```{r CASO DESFAVORABLE}
+#Criterio de Wald
+
+waldSCG2 = criterio.Wald(tablaSCG,F)
+waldSCG2
+
+# Criterio Optimista
+
+optimistaSCG2 = criterio.Optimista(tablaSCG,F)
+optimistaSCG2
+
+# Criterio Hurwicz
+
+hurwiczSCG2 = criterio.Hurwicz(tablaSCG, 0.5, F)
+hurwiczSCG2
+
+
+# Criterio Savage
+
+savageSCG2 = criterio.Savage(tablaSCG,F)
+savageSCG2
+
+# Criterio Laplace
+
+laplaceSCG2 = criterio.Laplace(tablaSCG,F)
+laplaceSCG2
+
+# Criterio Punto Ideal
+
+pidealSCG2 = criterio.PuntoIdeal(tablaSCG,F)
+pidealSCG2
+
+#Todos los criterios
+
+todosSCG2 = criterio.Todos(tablaSCG, alfa=0.5, favorable = F)
+todosSCG2
+
+```
+
+**Por tanto, en caso desfavorable, selecciono la alternativa d2.**
+
+## Problema 2:
+
+Luis De La Fuente, seleccionador internacional de España, debe presentar
+la lista de futbolistas convocados para la posiciones de delanteros de
+cara al Mundial 2026. Debe llevar 5 personas, y hasta ahora ya tiene 4
+seleccionadas. Para el último puesto que queda disponible, tiene tres
+futbolistas candidatas, los cuales tienen puntuaciones en cada uno de
+estas habilidades (pase, velocidad y gol, calculadas sobre 100):
+
+-   **Ayoze** es un jugador del Villarreal que en pase tiene una
+    puntuación de 55, en velocidad 78 y en gol 81.
+
+-   **Isi Palazón**, del Rayo Vallecano, tiene unas puntuaciones de 66
+    en pase, 77 en velocidad y 74 en gol.
+
+-   **Samu Orodion**, del Oporto, tiene puntuación de 80 en pase, 62 en
+    velocidad y 73 en gol.
+
+Decidir qué futbolista debe ser convocado para el Mundial 2028.
+
+**Solución**
+
+1\. Crear la matriz de datos:
+
+```{r}
+datosSCG <- matrix(data = c(55,78,81,66,77,74,80,62,73), nrow = 3, byrow = T)
+rownames(datosSCG) <- c("Ayoze", "Isi Palazón", "Samu Orodion")
+colnames(datosSCG) <- c("pase", "velocidad", "gol")
+datosSCG
+```
+
+Estamos ante un problema de decisión de un solo decisor, que tiene un
+modelo de beneficios (caso favorable). Con los datos de la tabla
+anterior:
+
+```{r}
+#Criterio de Wald
+
+waldSCG = criterio.Wald(datosSCG,T)
+waldSCG
+
+# Criterio Optimista
+
+optimistaSCG = criterio.Optimista(datosSCG,T)
+optimistaSCG
+
+# Criterio Hurwicz
+
+hurwiczSCG = criterio.Hurwicz(datosSCG, 0.5, T)
+hurwiczSCG
+
+
+# Criterio Savage
+
+savageSCG = criterio.Savage(datosSCG,T)
+savageSCG
+
+# Criterio Laplace
+
+laplaceSCG = criterio.Laplace(datosSCG,T)
+laplaceSCG
+
+# Criterio Punto Ideal
+
+pidealSCG = criterio.PuntoIdeal(datosSCG,T)
+pidealSCG
+
+#Todos los criterios
+
+todosSCG = criterio.Todos(datosSCG, alfa=0.5, favorable = T)
+todosSCG
+
+```
+
+***CONCLUSIÓN:***
+
+**Todos los criterios empleados recomiendan convocar a Isi Palazón**, a
+excepción del criterio Optimista, que recomienda a Ayoze , ya que el
+criterio optimista siempre actúa en la mejor situación posible, en la
+que Ayoze, en este caso, haría una gran actuación a nivel de goles, la
+cuál sería determinante.
+
+**Finalmente, se selecciona a Isi Palazón.**
 
 \newpage
 
@@ -232,7 +443,8 @@ knitr::kable(solp2[,3:ncol(solp2)])
 
 ## Problema 1
 
-Aplicar los criterios de decisión bajo incertidumbre a la siguiente matriz de valores:
+Aplicar los criterios de decisión bajo incertidumbre a la siguiente
+matriz de valores:
 
 ```{r, echo=FALSE}
 datos <- data.frame(
@@ -244,10 +456,11 @@ datos <- data.frame(
 knitr::kable(datos)
 ```
 
-Resolver primero para el caso FAVORABLE (beneficios) y, posteriormente, para el caso DESFAVORABLE (costos).
-
+Resolver primero para el caso FAVORABLE (beneficios) y, posteriormente,
+para el caso DESFAVORABLE (costos).
 
 ### CASO FAVORABLE
+
 **1. Criterio de Wald**
 
 ```{r}
@@ -300,13 +513,12 @@ names(p1_pid_FAV$AlternativaOptima)
 # La mejor decisión es la alternativa d2.
 ```
 
-
-***CONCLUSIÓN FINAL:***
-En el escenario favorable, es decir, considerando que los datos son beneficios, podemos observar que mayoritariamente la alternativa d2 es la más elegida.
-
-
+***CONCLUSIÓN FINAL:*** En el escenario favorable, es decir,
+considerando que los datos son beneficios, podemos observar que
+mayoritariamente la alternativa d2 es la más elegida.
 
 ### CASO DESFAVORABLE
+
 **1. Criterio de Wald**
 
 ```{r}
@@ -335,7 +547,6 @@ names(p1_hur_DESFAV$AlternativaOptima)
 dibuja.criterio.Hurwicz(datos,F)
 ```
 
-
 **4. Criterio de Savage**
 
 ```{r}
@@ -360,58 +571,48 @@ names(p1_pid_DESFAV$AlternativaOptima)
 # La mejor decisión es la alternativa d1.
 ```
 
-
-***CONCLUSIÓN FINAL:***
-En el escenario desfavorable, es decir, considerando que los datos son costes, podemos observar que mayoritariamente la alternativa d1 es la más elegida.
-
-
-
-
+***CONCLUSIÓN FINAL:*** En el escenario desfavorable, es decir,
+considerando que los datos son costes, podemos observar que
+mayoritariamente la alternativa d1 es la más elegida.
 
 ## Problema 2
-Un inversionista ha decidido analizar diversas opciones de 
-inversión, ya que busca maximizar sus ganancias bajo distintos 
-escenarios del mercado. Tras meses de estudio y consultas con 
-expertos financieros, ha reducido sus opciones a cuatro activos 
-financieros que, según su análisis, presentan distintas 
-oportunidades de rendimiento. 
 
-Ha identificado tres posibles escenarios del mercado: mercado 
-alcista, en el que se espera un crecimiento considerable de la 
-economía; mercado estable, donde los rendimientos se mantendrán 
-sin grandes cambios; y mercado bajista, en el que la economía 
-enfrentará dificultades.
+Un inversionista ha decidido analizar diversas opciones de inversión, ya
+que busca maximizar sus ganancias bajo distintos escenarios del mercado.
+Tras meses de estudio y consultas con expertos financieros, ha reducido
+sus opciones a cuatro activos financieros que, según su análisis,
+presentan distintas oportunidades de rendimiento.
 
-Con base en las proyecciones actuales, los rendimientos 
-estimados para cada activo bajo estos escenarios, expresados en 
-millones de euros, son los siguientes:
+Ha identificado tres posibles escenarios del mercado: mercado alcista,
+en el que se espera un crecimiento considerable de la economía; mercado
+estable, donde los rendimientos se mantendrán sin grandes cambios; y
+mercado bajista, en el que la economía enfrentará dificultades.
 
-* **Acciones tecnológicas**: en un escenario alcista generarían 15 
-                        millones, en un mercado estable producirían 
-                        7 millones, y en un mercado bajista solo 
-                        darían 1 millón. Este tipo de activo se ha 
-                        caracterizadompor su enorme potencial en épocas 
-                        de bonanza.
- 
- * **Bonos del gobierno**: se proyecta que generen un rendimiento 
-                      constante de 5 millones sin importar el estado 
-                      del mercado. Se consideran una opción de bajo 
-                      riesgo, especialmente en tiempos de incertidumbre, 
-                      debido a su estabilidad.
- 
- * **Fondos de bienes raíces**: bajo un mercado alcista podrían proporcionar 
-                           un rendimiento de 10 millones, en un mercado 
-                           estable 6 millones, y en un escenario bajista 
-                           2 millones. 
- 
- * **Criptomonedas**: en un mercado alcista su rentabilidad podría alcanzar 
-                  los 25 millones, en un mercado estable solo generarían 
-                  3 millones, y en un mercado bajista apenas 1 millón. 
-                  Este activo es conocido por su alta volatilidad.
- 
- Dado este panorama y los rendimientos proyectados, ¿cuál sería la opción 
- más adecuada que recomendarías al inversionista?
+Con base en las proyecciones actuales, los rendimientos estimados para
+cada activo bajo estos escenarios, expresados en millones de euros, son
+los siguientes:
 
+-   **Acciones tecnológicas**: en un escenario alcista generarían 15
+    millones, en un mercado estable producirían 7 millones, y en un
+    mercado bajista solo darían 1 millón. Este tipo de activo se ha
+    caracterizadompor su enorme potencial en épocas de bonanza.
+
+-   **Bonos del gobierno**: se proyecta que generen un rendimiento
+    constante de 5 millones sin importar el estado del mercado. Se
+    consideran una opción de bajo riesgo, especialmente en tiempos de
+    incertidumbre, debido a su estabilidad.
+
+-   **Fondos de bienes raíces**: bajo un mercado alcista podrían
+    proporcionar un rendimiento de 10 millones, en un mercado estable 6
+    millones, y en un escenario bajista 2 millones.
+
+-   **Criptomonedas**: en un mercado alcista su rentabilidad podría
+    alcanzar los 25 millones, en un mercado estable solo generarían 3
+    millones, y en un mercado bajista apenas 1 millón. Este activo es
+    conocido por su alta volatilidad.
+
+Dado este panorama y los rendimientos proyectados, ¿cuál sería la opción
+más adecuada que recomendarías al inversionista?
 
 ```{r}
 datos2 = crea.tablaX(c(15, 7, 1,
@@ -424,24 +625,26 @@ Alternativa = criterio.Todos(datos2, favorable = T)
 # El inversionista tiene margen de elección para buscar maximizar 
 # ganancias, lo que indica un problema en una situación favorable.
 ```
+
 ```{r}
 knitr::kable(Alternativa[,4:ncol(Alternativa)])
 
 ```
 
-***CONCLUSIÓN***: Podemos observar que, mayoritariamente la mejor alternativa serían las criptomonedas. Tan solo en el criterio de Wald, se obtiene que la mejor
-alternativa serían los bonos del gobierno.
-
-
-
+***CONCLUSIÓN***: Podemos observar que, mayoritariamente la mejor
+alternativa serían las criptomonedas. Tan solo en el criterio de Wald,
+se obtiene que la mejor alternativa serían los bonos del gobierno.
 
 \newpage
 
 # María del Rosario Ruiz Avila
 
 ## Problema 1
-Aplicar los criterios de decisión bajo incertidumbre a los problemas cuya matriz de valores numéricos viene dada en la tabla siguiente:
+
+Aplicar los criterios de decisión bajo incertidumbre a los problemas
+cuya matriz de valores numéricos viene dada en la tabla siguiente:
 Creamos la matriz de decisión:
+
 ```{r}
 tabla_decision <- matrix(c(7, 5, 8,   # Publicidad TV
                            4, 6, 3,   # Publicidad Online
@@ -453,134 +656,202 @@ rownames(tabla_decision) <- c("Publicidad TV", "Publicidad Online", "Eventos Pre
 colnames(tabla_decision) <- c("Mercado Local", "Mercado Internacional", "Nuevas Tecnologías")
 tabla_decision
 ```
-Donde las estrategias son los tipos de publicidad y los estados de la naturaleza los mercados considerar:
-a)Beneficios (favorable)
 
-Criterio de wald: Selecciona la estrategia que tenga el mayor de los valores mínimos, siendo conservador.
+Donde las estrategias son los tipos de publicidad y los estados de la
+naturaleza los mercados considerar: a)Beneficios (favorable)
+
+Criterio de wald: Selecciona la estrategia que tenga el mayor de los
+valores mínimos, siendo conservador.
+
 ```{r}
 s01_wald = criterio.Wald(tabla_decision,T)
 s01_wald
 names(s01_wald$AlternativaOptima)
 ```
-Criterio Optimista: Este criterio selecciona la estrategia con el mejor resultado posible, siendo muy optimista.
+
+Criterio Optimista: Este criterio selecciona la estrategia con el mejor
+resultado posible, siendo muy optimista.
+
 ```{r}
 s01_optima=criterio.Optimista(tabla_decision,T)
 s01_optima
 names(s01_optima$AlternativaOptima)
 ```
-Criterio  Hurwicz:ombina el optimismo y el pesimismo mediante un coeficiente alfa (en este caso, 0.4, lo que significa que se considera más pesimismo).
+
+Criterio Hurwicz:ombina el optimismo y el pesimismo mediante un
+coeficiente alfa (en este caso, 0.4, lo que significa que se considera
+más pesimismo).
+
 ```{r}
 s01_hurwitz=criterio.Hurwicz(tabla_decision,alfa=0.4,T)
 s01_hurwitz
 names(s01_hurwitz$AlternativaOptima)
 ```
-Criterio Savage: Minimiza el arrepentimiento, es decir, la diferencia entre lo que se obtuvo y lo que podría haberse obtenido en el mejor escenario.
+
+Criterio Savage: Minimiza el arrepentimiento, es decir, la diferencia
+entre lo que se obtuvo y lo que podría haberse obtenido en el mejor
+escenario.
+
 ```{r}
 s01_savage=criterio.Savage(tabla_decision,T)
 s01_savage
 names(s01_savage$AlternativaOptima)
 ```
-Criterio Laplace:Considera que todos los estados de la naturaleza son igualmente probables.
+
+Criterio Laplace:Considera que todos los estados de la naturaleza son
+igualmente probables.
+
 ```{r}
 s01_laplace=criterio.Laplace(tabla_decision,T)
 names(s01_laplace$AlternativaOptima)
 s01_laplace$ValorAlternativas
 ```
-Criterio Punto Ideal: Compara las alternativas con un "punto ideal" en el que se maximiza todo.
+
+Criterio Punto Ideal: Compara las alternativas con un "punto ideal" en
+el que se maximiza todo.
+
 ```{r}
 s01_pid=criterio.PuntoIdeal(tabla_decision,T)
 s01_pid$AlternativaOptima
 s01_pid$ValorAlternativas
 ```
+
 Todos los criterios:
+
 ```{r}
 s01_todos=criterio.Todos(tabla_decision,alfa=0.5,T)
 s01_todos
 dibuja.criterio.Hurwicz(tabla_decision,T)
 dibuja.criterio.Hurwicz_Intervalos(tabla_decision,T)
 ```
-En todos los casos la mejor estrategia es la Publicidad en TV, excepto en el criterio optimista que la estrategia son los Eventos Presenciales. 
 
-b)Costos (desfavorable)
-Criterio de wald
+En todos los casos la mejor estrategia es la Publicidad en TV, excepto
+en el criterio optimista que la estrategia son los Eventos Presenciales.
+
+b)Costos (desfavorable) Criterio de wald
+
 ```{r}
 s01_wald = criterio.Wald(tabla_decision,F)
 names(s01_wald$AlternativaOptima)
 ```
+
 Criterio Optimista
+
 ```{r}
 s01_optima=criterio.Optimista(tabla_decision,F)
 names(s01_optima$AlternativaOptima)
 ```
-Criterio  Hurwicz
+
+Criterio Hurwicz
+
 ```{r}
 s01_hurwicz=criterio.Hurwicz(tabla_decision,alfa=0.4,F)
 names(s01_hurwitz$AlternativaOptima)
 ```
+
 Criterio Savage
+
 ```{r}
 s01_savage=criterio.Savage(tabla_decision,F)
 names(s01_savage$AlternativaOptima)
 ```
+
 Criterio Laplace
+
 ```{r}
 s01_laplace=criterio.Laplace(tabla_decision,F)
 names(s01_laplace$AlternativaOptima)
 s01_laplace$ValorAlternativas
 ```
+
 Criterio Punto Ideal
+
 ```{r}
 s01_pid=criterio.PuntoIdeal(tabla_decision,F)
 s01_pid$AlternativaOptima
 s01_pid$ValorAlternativas
 ```
+
 Todos los criterios:
+
 ```{r}
 s01_todos=criterio.Todos(tabla_decision,alfa=0.5,F)
 s01_todos
 dibuja.criterio.Hurwicz(tabla_decision,F)
 dibuja.criterio.Hurwicz_Intervalos(tabla_decision,F)
 ```
-En 5 de los criterios la mejor opción es la Publicidad Online para minimizar los costos. El criterio de Wald tiene dos soluciones, la anterior y la estrategia de Influencers. Por otro lado, el criterio optimista repite con Eventos Presenciales. 
+
+En 5 de los criterios la mejor opción es la Publicidad Online para
+minimizar los costos. El criterio de Wald tiene dos soluciones, la
+anterior y la estrategia de Influencers. Por otro lado, el criterio
+optimista repite con Eventos Presenciales.
 
 ## Problema 2
-Dos amigos, Claudia y Mario, están planeando abrir una pequeña cafetería. Han ahorrado 1500 euros cada uno y quieren decidir qué enfoque darle al negocio. Existen tres opciones según el tipo de menú que ofrezcan: Un menú básico, un menú saludable o un menú gourmet. Dependiendo de la situación económica y las tendencias alimentarias, la demanda puede aumentar o disminuir, lo que afectará sus ingresos.
 
-Si eligen un menú básico, tendrán un flujo constante de clientes, pero los márgenes de ganancia serán bajos, con una ganancia o pérdida del 5%.
+Dos amigos, Claudia y Mario, están planeando abrir una pequeña
+cafetería. Han ahorrado 1500 euros cada uno y quieren decidir qué
+enfoque darle al negocio. Existen tres opciones según el tipo de menú
+que ofrezcan: Un menú básico, un menú saludable o un menú gourmet.
+Dependiendo de la situación económica y las tendencias alimentarias, la
+demanda puede aumentar o disminuir, lo que afectará sus ingresos.
 
-Si eligen un menú saludable, pueden atraer a un nicho de clientes en crecimiento, pero la inversión en ingredientes será mayor, y podrían obtener una ganancia del 12% si la tendencia continúa, o perder un 8% si la tendencia no se mantiene.
+Si eligen un menú básico, tendrán un flujo constante de clientes, pero
+los márgenes de ganancia serán bajos, con una ganancia o pérdida del 5%.
 
-Si optan por un menú gourmet, el riesgo es mayor porque depende de la clientela de alto poder adquisitivo, lo que les permitirá obtener una ganancia del 20% si la economía es favorable, pero podrían perder un 15% si la economía se desacelera.
-Claudia es más conservadora y prefiere minimizar los riesgos, mientras que Mario está dispuesto a asumir más riesgos confiando en que la economía mejorará.
+Si eligen un menú saludable, pueden atraer a un nicho de clientes en
+crecimiento, pero la inversión en ingredientes será mayor, y podrían
+obtener una ganancia del 12% si la tendencia continúa, o perder un 8% si
+la tendencia no se mantiene.
 
-¿Qué tipo de menú elegiría cada uno de ellos según sus actitudes hacia el riesgo?
-Estado e1 (Demanda favorable)
+Si optan por un menú gourmet, el riesgo es mayor porque depende de la
+clientela de alto poder adquisitivo, lo que les permitirá obtener una
+ganancia del 20% si la economía es favorable, pero podrían perder un 15%
+si la economía se desacelera. Claudia es más conservadora y prefiere
+minimizar los riesgos, mientras que Mario está dispuesto a asumir más
+riesgos confiando en que la economía mejorará.
+
+¿Qué tipo de menú elegiría cada uno de ellos según sus actitudes hacia
+el riesgo? Estado e1 (Demanda favorable)
+
 ```{r}
 n11 = 1500 * 0.05     # Menú básico
 n21 = 1500 * 0.12     # Menú saludable
 n31 = 1500 * 0.20     # Menú gourmet
 ```
+
 Estado e2 (Demanda desfavorable)
+
 ```{r}
 n12 = -1500 * 0.05    # Menú básico
 n22 = -1500 * 0.08    # Menú saludable
 n32 = -1500 * 0.15    # Menú gourmet
 ```
+
 Crear la tabla de decisión
+
 ```{r}
 tb_decision = crea.tablaX(c(n11, n12,
                             n21, n22,
                             n31, n32), 3, 2)
 ```
+
 Aplicar los criterios de decisión
+
 ```{r}
 res_decision = criterio.Todos(tb_decision, alfa = 0.5, favorable = TRUE)
 ```
+
 Mostrar los resultados en formato tabla
+
 ```{r}
 knitr::kable(res_decision)
 ```
-Claudia es conservadora y busca minimizar las posibles pérdidas. Aplicando el criterio de Wald o Minimax, probablemente seleccione la opción del menú básico, que ofrece la menor pérdida en el peor escenario (-75 euros). 
-Mario es más arriesgado y busca maximizar sus posibles ganancias. Aplicando el criterio optimista (Maximax), seleccionará el menú gourmet, que le podría dar la mayor ganancia en el mejor escenario (300 euros).
-Claudia optará por un menú básico y Mario por un menú gourmet. 
 
+Claudia es conservadora y busca minimizar las posibles pérdidas.
+Aplicando el criterio de Wald o Minimax, probablemente seleccione la
+opción del menú básico, que ofrece la menor pérdida en el peor escenario
+(-75 euros). Mario es más arriesgado y busca maximizar sus posibles
+ganancias. Aplicando el criterio optimista (Maximax), seleccionará el
+menú gourmet, que le podría dar la mayor ganancia en el mejor escenario
+(300 euros). Claudia optará por un menú básico y Mario por un menú
+gourmet.
