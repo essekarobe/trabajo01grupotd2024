@@ -67,8 +67,6 @@ dos puntos de vistas:
 
 ```{r include=FALSE}
 source("teoriadecision_funciones_incertidumbre.R")
-library(kableExtra)
-
 ```
 
 ```{r echo=TRUE}
