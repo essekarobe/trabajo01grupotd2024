@@ -250,7 +250,6 @@ knitr::kable(solp2[,3:ncol(solp2)])
 
 ```{r include=FALSE}
 source("teoriadecision_funciones_incertidumbre.R")
-library(kableExtra)
 ```
 
 ## Problema 1:
