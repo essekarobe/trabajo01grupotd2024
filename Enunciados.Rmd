@@ -69,9 +69,9 @@ dos puntos de vistas:
 source("teoriadecision_funciones_incertidumbre.R")
 ```
 
-```{r echo=TRUE}
+```{r echo=FALSE}
 tablaSCG=crea.tablaX(c(2,5,7,2,-2,9,5,3,4,5,3,1), numalternativas = 3,numestados = 4)
-tablaSCG
+knitr::kable(tablaSCG)
 ```
 
 1)  **Caso Favorable (beneficios)**
